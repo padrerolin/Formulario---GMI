@@ -2,8 +2,24 @@
     margin:0;
     padding:0;
 }
+*{
+    -webkit-box-sizing: border-box;
+}
 body{
-    background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(250, 232, 233));
+    font-family: sans-serif;
+    font-size: 100%;
+    background-color:#fafafa;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+.box{
+    width: 983px;
+    margin: 0 auto;
+}
+.box-vitrine{
+    overflow: hidden;
+    clear: both;
+    margin-bottom:19px;
 }
 .tt-vitrine cite{
     font: 36px "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
@@ -11,60 +27,241 @@ body{
     padding-right: 20px;
     float: none;
 }
+
 .tt-cadastro{
-    border-bottom:2px solid #d10018;
+    border-bottom:1px solid #d10018;
     margin-bottom: 15px;
     padding-bottom: 5px;
     font: 20px "Century Gothic";
     color: #d10018;
 }
-h3{
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
+
 fieldset{
     padding:0;
     margin:0;
     border:0;
 }
-fieldset{
-    border: 1px solid #c0c0c0;
+
+.inputBox{
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .dadosEmpresaEndereco{
-    width: 50%
+    width: 50%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
-.inputBox{
-    margin-left: 0px;
-    margin-right: 0px;
+.dadosEmpresaEndereco{
+    float: left;
 }
+
 
 label {
     display: inline-block;
     vertical-align: middle;
     margin-bottom: 5px;
 }
-.form-control{
-    border-radius:0;
-    background:#fff;
+.inpEstLbl{
+    margin-right: -9px;
+    padding-right: 25px;
+}
+.form-control {
+    border-radius: 0;
+    background: #fff;
     font-family: "Century Gothic";
     box-shadow: none;
 }
-.form-control{
-    display:block;
-    width: 100%;
+.form-control {
+    display: block;
+    width: 80%;
     padding: 6px 12px;
     font-size: 15px;
-    line-height:1.428571429;
-    color:#b0b0b0;
+    line-height: 1.428571429;
+    color: #b0b0b0;
     vertical-align: middle;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.cadastro fieldset {
+    margin-bottom: 30px;
+}
 
+.cadastro .form-control {
+    height: 35px;
+}
+.cadastro label {
+    text-align: left;
+    font: 15px/30px "Century Gothic";
+    color: #414141;
+}
+.cadastro input[type="text"] {
+    border: 1px solid #dde2e4;
+}
+.classificacao-set{
+    width: 100%;
+}
+.classificaco-set{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.cadastro .checkboxInscEst{
+    margin-top: 34px;
+}
+.isentoLabel {
+    width: 58.333333333333336%;
+    float: left;
+}
+.isentoLabel{
+    position: relative;
+    min-height: 1px;
+    padding-left:15px;
+    padding-right:15px;
+}
+.isentoBx {
+    width: 8.333333333333332%;
+    float: left;
+}
+.cadastro .form-group > div {
+    position: relative;
+}
+.cadastro .form-group{
+    margin-bottom: 5px;
+}
 
+.cadastro .checkboxInscEst input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+.cadastro input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.inscbox-SM{
+        width: 58.333333333333336%;
+        float:left;
+}
+.isentoDivBx{
+        width: 25%;
+        float:left;
+}
+.inscMuniRegimeTributCidad{
+    width: 83.33333333333334%;
+}
+.combo {
+    margin: 0;
+    width: 80%;
+    height: 37px;
+    background: #FFF;
+}
+.combo{
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dde2e4;
+}
+.dropdown-select{
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    margin:0;
+    padding:6px 8px 6px 8px;
+    font-size: 15px;
+    height: 33px;
+    z-index: 1;
+    font-family: "Century Gothic";
+    color: #a4a4a4;
+    border:0;
+    border: 0;
+    border-radius: 0;
+    background:transparent;
+    -webkit-appearance: none ;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+.cadastro .form-group.cep .element-description {
+    display: none;
+}
+.classificacao-negocio label{
+    display: block;
+}
+.ctCpf {
+    width: 41.66666666666667%;
+    float: left;
+}
+.celDepCarg{
+        width: 33.33333333333333%;
+        float: left;
+}
+.btoCanEnv{
+    width: 16.666666666666664%;
+    float: left;
 
 }
+.cadastro .bto-float {
+
+    font-size: 13px;
+}
+.bto-submeter {
+    display: block;
+    background: #414141;
+    height: 37px;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font: 14px/37px "Century Gothic Bold";
+    border-radius: 6px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.pull-right{
+    background:#d11c21;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+.logoGMI{
+    width: 25%;
+}
+.col{
+    float: left;
+}
+.colunas {
+    border-top: 2px solid #D1001A;
+    background: #373737;
+    clear: both;
+    overflow: hidden;
+    padding-top: 41px;
+    padding-bottom: 60px;
+}
+.item-col{
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+.footerDescColor{
+    color: #d10018;
+    font: 15px "Century Gothic Bold";
+}
+.footerGrey {
+    color: #a4a4a4;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: "Century Gothic";
+}
+.header-login{
+    margin: 35px 0;
+}
+
 
 
