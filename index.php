@@ -2,6 +2,18 @@
 <head>
 <link href="formulario.css" rel="stylesheet">
 <title>Formulario | GMI </title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/additional-methods.min"></script>
+<script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#formval').validate({
+      //Continuar validação dos forms
+    });
+  });
+</script>
 </head>
 <body>
   <header id="header" class="header-login">
@@ -22,37 +34,49 @@
 			<cite>Registro de Clientes</cite>
 	</h2>
 </header>
-    <form role="form" class="cadastro inputBox" action="/cliente/cadastro" name="client_data" method="post">
+ 
+    
+    <form role="form" id="formval" class="cadastro inputBox" action="contact.php" name="client_data" method="post" enctype="multipart/form-data">
     <fieldset class="dadosEmpresaEndereco">
 			<h3 class="tt-cadastro">Dados da Empresa</h3>
+      <input type="hidden" name="id" value="" class=" form-control" id="id">
+      <input type="hidden" name="person_type" value="J" class=" form-control" id="person_type">
       
-    <div class="inputBox">
-      <label for="cnpj">* CNPJ:</label>
-      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+    <div class="inputBox form-group">
+      <label class="text-right" for="cnpj">* CNPJ:</label>
+      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+       
     </div>
     </div>
 
-    <div class="inputBox">
+    <div class="inputBox form-group">
       <label class="text-right" for="name_corporate">* Razão Social:</label>
       <input type="text" name="name_corporate" id="name_corporate" value="" class="form-control" maxlength="255"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+ 
     </div>
     </div>
-    <div class="inputBox">
+    </div>
+    <div class="inputBox form-group has-error">
       <label class="text-right" for="name_fancy">* Nome Fantasia:</label>
       <input type="text" name="name_fancy" id="name_fancy" value="" class="form-control" maxlength="255"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+    
+    </div>
     </div>
     </div>
 
-    <div class="inputBox">
+    <div class="inputBox form-group has-error">
         <div class="inscbox-SM form-group inputInscEst">
           <label class="inpInscEstLbl text-right" for="registration_state">* Inscrição Estadual: </label>
           <input type="text" name="registration_state" id="registration_state" value="" class="form-control" maxlength="255">
+       
+        </div>
+    </div>
         </div>
         
         <div class="isentoDivBx form-group checkboxInscEst">
           <label class="isentoLabel text-right" for="Isento">Isento</label>
           <div class="isentoBx">
-          <input type="hidden" name="registration_state_exempted" value="0">
+          <input type="hidden" name=" " value="0">
           <input type="checkbox" name="registration_state_exempted" id="Isento" value="1" class="form-control">
           </div>
           </div>
@@ -68,7 +92,7 @@
     
 
     <div class="inputBox">
-      <div class="inscMuniRegimeTributCidad form-group">
+      <div class="inscMuniRegimeTributCidad form-group has-error">
       <label class="text-right" for="">* Regime tributário: </label>
       <div class="combo"> 
         <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker">
@@ -78,7 +102,10 @@
           <option value="M" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
           <option value="S" label="Simples">Simples</option>
           <option value="X" label="Super Simples">Super Simples</option>
-      </select><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher."></div>
+      </select>
+   
+    </div>
+      <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher."></div>
     </div>
     </div>
     </div>
@@ -92,35 +119,43 @@
 			<h3 class="tt-cadastro">Endereço</h3>
 
       <div class="inputBox">
-        <div class="inputCep form-group cep">
-      <label class="text-right" for="address-cep">* CEP:</label>
-        <input type="text" name="address[cep]" id="address-cep" value=""class="cep form-control" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
+        <div class="inputCep form-group cep has-error">
+      <label class="text-right" for="end_cep">* CEP:</label>
+        <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
+        
+    </div>
         </div>
     </div>
-    <div class="inputBox">
-      <label class="text-right" for="address-street">* Endereço:</label>
-        <input type="text" name="address[street]" id="address-street" value="" class="form-control" maxlength="255">
+    <div class="inputBox form-group has-error">
+      <label class="text-right" for="end_rua">* Endereço:</label>
+        <input type="text" name="end_rua" id="end_rua" value="" class="form-control" maxlength="255">
+      
     </div>
+      </div>
     <div class="inputBox">
-      <div class="isentoDivBx form-group">
-      <label class="text-right" for="address-number">* Número:</label>
-        <input type="text" name="address[number]" id="address-number" value="" class="form-control" maxlength="255">
-        </div>
+      <div class="isentoDivBx form-group has-error">
+      <label class="text-right" for="end_num">* Número:</label>
+        <input type="text" name="end_num" id="end_num" value="" class="form-control" maxlength="255">
+     
+    </div>
+      </div>
       <div class="inscbox-SM form-group">
-        <label class="text-right" for="address-complement">* Complemento:</label>
-        <input type="text" name="address[complement]" id="address-complement" value="" class="form-control" maxlength="255">
+        <label class="text-right" for="end_comp">* Complemento:</label>
+        <input type="text" name="end_comp" id="end_comp" value="" class="form-control" maxlength="255">
       </div>
       </div>
     
     <div class="inputBox">
-      <div class="inscbox-SM form-group">
-      <label class="text-right" for="address-neighborhood">* Bairro:</label>
-        <input type="text" name="address[neighborhood]" id="address-neighborhood" value="" class="form-control" maxlength="255">
+      <div class="inscbox-SM form-group has-error">
+      <label class="text-right" for="end_bairro">* Bairro:</label>
+        <input type="text" name="end_bairro" id="end_bairro" value="" class="form-control" maxlength="255">
+     
+    </div>
       </div>
-      <div class="isentoDivBx form-group">
+      <div class="isentoDivBx form-group has-error">
     <label class="text-right" for=""> * Estado: </label>
     <div class="combo">
-      <select name="adress[state]" id="adress-state" class=" dropdown-select selectpicker">
+      <select name="end_estado" id="end_estado" class=" dropdown-select selectpicker">
       <option value="0" label=""></option>
       <option value="AC" label="AC">AC</option>
       <option value="AL" label="AL">AL</option>
@@ -149,61 +184,80 @@
       <option value="SE" label="SE">SE</option>
       <option value="SP" label="SP">SP</option>
       <option value="TO" label="TO">TO</option>
-      </select></div>
+      </select>
+    
+    </div>
+    </div>
       </div>
 
 
       </div>
     <div class="inputBox">
-      <div class="inscMuniRegimeTributCidad form-group">
-      <label class="text-right" for="adress-city">* Cidade:</label>
-        <input type="text" name="adress[city]" id="adress-city"value="" class="form-control" maxlength="255">
+      <div class="inscMuniRegimeTributCidad form-group has-error">
+      <label class="text-right" for="end_cidade">* Cidade:</label>
+        <input type="text" name="end_cidade" id="end_cidade"value="" class="form-control" maxlength="255">
+     
+    </div>
       </div>
 
     </div>
-    <div class="inputBox">
-      <label class="text-right" for="phone_number">* Telefone Comercial:</label>
-      <input type="text" name="phone_number" id="phone_number" value="" class="phonenumber form-control">
+    <div class="inputBox form-group has-error">
+      <label class="text-right" for="fone_comercial">* Telefone Comercial:</label>
+      <input type="text" name="fone_comercial" id="fone_comercial" value="" class="phonenumber form-control">
+  
     </div>
-    <div class="inputBox">
-      <label class="text-right" for="email">* E-mail NF-e:</label>
-      <input type="text" name="email" id="email" value="" class="form-control">
+    </div>
+    <div class="inputBox form-group has-error">
+      <label class="text-right" for="emailnfe">* E-mail NF-e:</label>
+      <input type="text" name="emailnfe" id="emailnfe" value="" class="form-control">
+    
+    </div>
     </div>
       </fieldset>
       <fieldset class="classificacao-set">
         <div class="row classificacao-negocio">
           <div class="inscMuniRegimeTributCidad form-group">
           <label class="text-right">* Classifique seu negócio (múltipla escolha):</label>
-          <div class=""> 
+          <div cla
+          ss=""> 
           <label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio1" value="1" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio1" value="1" class="checkboxadjusment">
             Loja Virtual (e-commerce, marketplace)
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio2" value="2" class="checkboxadjusment">
+          </label>
+          <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio2" value="2" class="checkboxadjusment">
             Revendedor de TI com foco em consumidor doméstico e pequenas empresas
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio3" value="3" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio3" value="3" class="checkboxadjusment">
             Revendedor de TI com foco em Corporativo de médias e grandes empresas
-        </label><label class ="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio4" value="4" class="checkboxadjusment">
+        </label>
+        <label class ="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio4" value="4" class="checkboxadjusment">
             Revendedor de Automação Comercial
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio5" value="5" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio5" value="5" class="checkboxadjusment">
             Revendedor de Segurança Eletrônica
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio6" value="6" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio6" value="6" class="checkboxadjusment">
             Provedor de Internet (ISP)
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio7" value="7" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio7" value="7" class="checkboxadjusment">
             Revendedor de Geradores de Energia Solar
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio8" value="8" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio8" value="8" class="checkboxadjusment">
             Prestador de Serviços, Suporte em TI, Assistência Técnica
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio9" value="9" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio9" value="9" class="checkboxadjusment">
             Integrador Solar
-        </label><label class="text-right">
-            <input type="checkbox" name="classificacaoNegocio" id="classificacaoNegocio10" value="10" class="checkboxadjusment">
+        </label>
+        <label class="text-right">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio10" value="10" class="checkboxadjusment">
             Outros
         </label>
           </div>
@@ -218,41 +272,63 @@
         <strong>Estaremos juntamente dos dados da sua empresa pré-registrando seus dados pessoais nos nossos sistemas:</strong>
       </div>
     <div class="inputBox">
-        <div class="inscbox-SM form-group">
-          <label class="text-right" for="contacts-name">* Nome Completo:</label>
-          <input type="text" name="contacts[name]" id="contacts-name" value="" class="form-control" maxlength="255">
+        <div class="inscbox-SM form-group has-error">
+          <label class="text-right" for="nome_cliente">* Nome Completo:</label>
+          <input type="text" name="nome_cliente" id="nome_cliente" value="" class="form-control" maxlength="255">
+       
+    </div>
         </div>
         <div class="ctCpf form-group">
-          <label class="text-right" for="contacts-cpf"> CPF:</label>
-          <input type="text" name="contacts[cpf]" id="contacts-cpf" value="" class="form-control">
+          <label class="text-right" for="cpf_cliente"> CPF:</label>
+          <input type="text" name="cpf_cliente" id="cpf_cliente" value="" class="form-control" maxlength="14">
         </div>
     </div>
    
     <div class="inputBox">
+      <div class="celDepCarg form-group has-error">
+      <label class="text-right" for="celular_cliente">* Celular/Whatsapp:</label>
+      <input type="text" name="celular_cliente" id="celular_cliente" value="" class="phonenumber form-control" data-mask="(99) 99999-9999" minlength="14" autocomplete="off"> 
+    
+    </div>
+    </div>
       <div class="celDepCarg form-group">
-      <label class="text-right" for="contacts-phone_number">* Celular/Whatsapp:</label>
-      <input type="text" name="contacts[phone_number]" id="contacts-phone_number" value="" class="phonenumber form-control" data-mask="(99) 99999-9999" minlength="14"> 
+      <label class="text-right" for="departamento_cliente">* Departamento:</label>
+      <input type="text" name="departamento_cliente" id="departamento_cliente" value="" class="form-control" maxlength="255">
       </div>
       <div class="celDepCarg form-group">
-      <label class="text-right" for="contacts-department">* Departamento:</label>
-      <input type="text" name="contacts[department]" id="contacts-department" value="" class="form-control" maxlength="255">
+      <label class="text-right" for="cliente_cargo">* Cargo:</label>
+      <div class="combo">
+        <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;">
+        <select name="cliente-cargo" class="dropdown-select selectpicker">
+          <option value="">
+            <option value="Proprietário(a)">Proprietário(a)</option>
+            <option value="Diretor(a)">Diretor(a)</option>
+            <option value="Gerente Geral">Gerente Geral</option>
+            <option value="Gerente TI">Gerente TI</option>
+            <option value="Comprador">Comprador</option>
+            <option value="Técnico em TI">Técnico em TI</option>
+            <option value="Financeiro">Financeiro</option>
+            <option value="Outros"></option>
+            <option value=""></option>
+          </option>
+        </select>
       </div>
-      <div class="celDepCarg form-group">
-      <label class="text-right" for="contacts-role">* Cargo:</label>
-      <input type="text" name="contacts[role]" id="contacts-role" value="" class="form-control" maxlength="255">
+      
       </div>
     </div>
 
 
-    <input type="hidden" name="contacts[active]" value="1">
+    <input type="hidden" name="contactsAactive" value="1">
     <div class="inputBox">
-    <div class="dadosEmpresaEndereco form-group">
+    <div class="dadosEmpresaEndereco form-group has-error">
       <label class="text-right" for="">* Email:</label>
-      <input type="text" name="contacts[email]" id="contacts-email" value="" class="form-control">
+      <input type="text" name="cliente_email" id="contacts_email" value="" class="form-control">
+  
+    </div>
     </div>
       <div class="celDepCarg form-group">
-      <label class="text-right"for="contacts-skype"> Skype:</label>
-      <input type="text" name="contacts[role]" id="contacts-role" value="" class="form-control" maxlength="255">
+      <label class="text-right"for="cliente_skype"> Skype:</label>
+      <input type="text" name="cliente_skype" id="cliente_skype" value="" class="form-control" maxlength="255">
       </div>
     </div>
     </fieldset>
@@ -267,14 +343,82 @@
   </div>
     
       </div>
+      <!-- INICIO DOS ANEXOS -->
+      <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvCnpj" class="arqvClass">Insira seu cartão CNPJ: 
+          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+          </label>
+          <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
+        </div>
+      </div>
+      <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvCPF" class="arqvClass">Insira seu RG/CPF: 
+          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+          </label>
+          <input id="arqvCPF"type="file" name="input_rg" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
+        </div>
+      </div>
+      <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvRes" class="arqvClass">Insira seu Comprovante : 
+          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+          </label>
+          <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
+        </div>
+      </div>
+  
+   
       </form>
       </section>  
     <!-- RODAPE -->
-    <footer id="rodape" class="rodape">
+    <!--<footer id="rodape" class="rodape">
+      
+      
       <div class="colunas">
+      <div class="box">
+      <div id="conteudo-base">
+        <div class="content">
+          <img src="imgs/gmicadeado.png"style="float: left; width: 88px; height: 88px; display: inline;">
+          <span style="font-family: Arial;"></span>
+          <p style="color: white; font-size: 17px; float: left; display: inline;">
+          <span style="font-family: Arial;">COMPRA 100%</span>
+          <br>
+          <span style="font-family: Arial;">SEGURA</span>
+          </p>
+          <img src="imgs/gmicaminhao.png" style="float: left; width: 88px; height:88px; display: inline;">
+          <span style="font-family: Arial;"></span>
+          <p style="color: white; font-size: 17px; float: left; display: inline;">
+          <span style="font-family: Arial;"> FRETE GRÁTIS PARA O</span>
+          <br>
+          <span style="font-family: Arial;">NORTE E NORDESTE</span>  
+        </p>
+        <span style="font-family: Arial;"></span>
+        <img src="imgs/gmientrega.png" style="float: left; width: 88px; height: 88px; display: inline;">
+          <span style="font-family: Arial;"></span>
+          <p style="color: white; font-size: 17px; float: left; display: inline;">
+          <span style="font-family: Arial;">ENTREGA</span><br>
+          <span style="font-family: Arial;"> RÁPIDA</span>
+        </p>
+        <span style="font-family: Arial;"></span>
+        <img src="imgs/gmibanco.png"
+        style="float: left; width: 88px; height: 88px; display: inline;">
+        <span style="font-family: Arial;"></span>
+        <p style="color: white; font-size: 17px; float: left; display: inline;">
+        <span style="font-family: Arial;">MIX COM MAIS</span><br>
+        <span style="font-family: Arial;"> DE 10 MIL ITENS</span>
+      </p>
+      
+      </div>
+      </div>
+      
         <div class="col">
           <div class="item-col">
             <div id="col-conteudo">
+              <p>
+              <img src="imgs/gmimercado.png" data-filename="rodape-comercio.png" style="width: 48px;">
+              </p>
               <p class="footerDescColor">
                 <b>
                 GM COMÉRCIO E
@@ -319,9 +463,143 @@
             </div>
           </div>
         </div>
-
+        <div class="col">
+          <div class="item-col">
+            <div id="col-conteudo">
+              <p></p>
+              <p><img src="imgs/gmidinheiro.png" data-filename="rodape-pagamento.png" style="width: 48px;">
+              </p>
+              <p class="footerGrey">
+                <b>
+                  FORMAS DE PAGAMENTO
+                  <br>
+                  CARTÕES DE CRÉDITO:
+                </b>
+              </p>
+              <p>
+                <img src="imgs/gmicartoesbandeiras.png" data-filename="pagamentos-1.png" style="width: 302.29 6px; height: 36.5312px;">
+                <b>
+                  <br>
+                </b>
+              </p>
+              <p class="footerGrey">
+                "Para compras via cartão de crédito é"
+                <br>
+                "necessário ter um cartão cadastrado."
+              </p>
+              <a href="/conteudo/informacoes_formas_de_pagamento/41" style="text-decoration: underline;">Clique aqui e saiba mais.</a>
+              <p></p>
+              <p>
+                <br>
+              </p>
+              <p class="footerGrey">
+                BOLETO BANCÁRIO
+              </p>
+              <p>
+                <img src="imgs/gmibandeirasboleto.png" data-filename="bancos_GMI_icone_horizontal.png" style="width: 124px;">
+              </p>
+              <p>
+              <img src="imgs/gmicheque.png" data-filename="pagamentos-3.png" style="width: 68.4773px; height: 48.3906px;">
+              <br>  
+            </p>
+            <p></p>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
+        <div class="col">
+          <div class="item-col">
+          <p> </p>  
+          <p>
+            <img src="imgs/gmiemg.png" data-filename="rodape-servicos.png" style="width: 48px;">
+            </p>
+            <h3>Servicos</h3>
+            <nav>
+              <ul>
+                <li>
+                  <h2 class="footerGrey">
+                    <a href="/contato" title="Fale Conosco">
+                    Fale Conosco
+            </a>
+            </h2></li></ul></nav>
+          </div>
+          <div class="item-col">
+            <h3>Institucional</h3>
+            <nav>
+              <ul>
+                <li>
+                  <h2>
+                  <a href="/conteudo/politica_de_privacidade/40" title="Política de Privacidade" target="_blank">
+            Política de Privacidade
+        </a>
+                  </h2>
+                </li>
+                <li>
+                  <h2>
+                  <a href="/conteudo/quem_somos/30" title="Quem Somos" target="_blank">
+            Quem Somos
+              </a>
+                  </h2>
+                </li>
+                <li>
+                  <h2>
+                  <a href="/conteudo/filiais/45" title="Filiais">
+            Filiais
+        </a>
+                  </h2>
+                </li>
+                <li>
+                  <h2>
+                  <a href="https://www.gmimportacao.com.br/rma/" title="Institucional" target="_blank">
+            Suporte/RMA
+        </a>
+                  </h2>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          
+        </div>
+        <div class="col">
+          <div class="item-col">
+            <div id="col-conteudo">
+              <p>
+                <b>
+                  SIGA-NOS
+                </b>
+              </p>
+              <p>
+                <a href="https://www.facebook.com/gmidistribuidora" target="_blank">
+                  <img src="imgs/gmifacebook.png" data-filename="facebook-4-32.png"style="width: 32px; margin-right: 5px;">
+                </a>
+                <a href="https://twitter.com/gmi_dist" target="_blank">
+                  <img src="imgs/gmitwitter.png" data-filename="twitter-4-32.png" style="width: 32px; margin-right: 5px;">
+                </a>
+                <a href="https://www.instagram.com/gmidistribuidora/" target="_blank">
+                  <img src="imgs/gmiinstagram.png" style="width: 38px; height: 38px;">
+                </a>
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>-->
+
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script type="text/javascript">
+    
+      $(document).ready(function() {
+        $('#cnpj').mask('99.999.999/9999-99');
+        $('#end-cep').mask('99999-999');
+        $('#cpf-cliente').mask('999.999.999-99');
+        });
+
+
+ 
+    </script>
     
 
 </body>

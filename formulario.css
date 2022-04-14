@@ -156,7 +156,7 @@ label {
 }
 .combo {
     margin: 0;
-    width: 80%;
+    width: 100%;
     height: 37px;
     background: #FFF;
 }
@@ -184,7 +184,7 @@ label {
     -webkit-appearance: none ;
 }
 a {
-    color: #428bca;
+    color: #a4a4a4;
     text-decoration: none;
 }
 .cadastro .form-group.cep .element-description {
@@ -202,7 +202,7 @@ a {
         float: left;
 }
 .btoCanEnv{
-    width: 16.666666666666664%;
+    width: 100%;
     float: left;
 
 }
@@ -235,10 +235,11 @@ img {
 }
 .col{
     float: left;
+    width: 370px;
 }
 .colunas {
     border-top: 2px solid #D1001A;
-    background: #373737;
+    background: #060000a8;
     clear: both;
     overflow: hidden;
     padding-top: 41px;
@@ -248,20 +249,95 @@ img {
     width: 200px;
     display: inline-block;
     vertical-align: top;
+    margin-bottom:20px;
 }
+
 .footerDescColor{
     color: #d10018;
     font: 15px "Century Gothic Bold";
 }
 .footerGrey {
     color: #a4a4a4;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 22px;
     font-family: "Century Gothic";
 }
+
 .header-login{
     margin: 35px 0;
 }
+.combo::before {
+    background: url(imgs/ico-combo-maior.jpg) no-repeat right center #FFF;
+    content: "";
+    width: 38px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+#rodape, #rodapeSite {
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 30px 0 0;
+}
+
+#rodape .content, #rodapeSite .content {
+    margin: 0 auto;
+    max-width: 1215px;
+    position: relative;
+    z-index: 1;
+    clear: both;
+    padding: 0 20px;
+}
+#conteudo-base {
+    display: flex;
+    margin-bottom: 30px;
+    padding: 50px 0px;
+}
+
+b, strong {
+    font-weight: 700;
+    font-family: Gilroy, sans-serif;
+}
+p{
+    margin:1em 0;
+}
+.blue-section .col a,.blue-section .col a {
+    font-size: 14px;
+    line-height: 1.8em;
+}
+.col a{
+    font-size: 14px;
+}
+#main_footer .blue-section .col h3{
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+    h3{
+    color :#d10018;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+nav ul{
+    list-style: none;
+    list-style-image: none;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+/* Esconde o input */
+input[type='file'] {
+    display: none
+  }
+.arqvClass{
+    float: left;
+    margin-right: 100px;
+}
 
 
-
+ 
