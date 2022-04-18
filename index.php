@@ -7,13 +7,68 @@
 <script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
   $(document).ready(function(){
     $('#formval').validate({
-      //Continuar validação dos forms
+      rules:{
+        cnpj:{
+            required: true
+        },
+        name_corporate:{
+            required: true
+        },
+        name_fancy:{
+            required: true  
+        },
+        registration_state:{
+            required: true
+        },
+        regime_tributario:{
+           required: true
+        },
+        end_cep:{
+          required: true
+        },
+        end_num:{
+          required: true
+        },
+        end_comp:{
+          required: true
+        },
+        end_bairro:{
+          required: true
+        },
+        fone_comercial:{
+          required: true
+        },
+        emailnfe:{
+          required: true,
+          email:true
+        },
+        classificacao_negocio:{
+          required: true
+        },
+        nome_cliente:{
+          required: true
+        },
+        departamento_cliente:{
+          required: true
+        },
+        cliente_cargo:{
+          required: true
+        },
+        cliente_email:{
+          required: true,
+          email: true
+        }
+      },
+      messages:{
+
+      }
     });
-  });
+  });-->
 </script>
+
 </head>
 <body>
   <header id="header" class="header-login">
@@ -44,7 +99,9 @@
       
     <div class="inputBox form-group">
       <label class="text-right" for="cnpj">* CNPJ:</label>
-      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off">
+      <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+        
        
     </div>
     </div>
@@ -56,7 +113,7 @@
     </div>
     </div>
     </div>
-    <div class="inputBox form-group has-error">
+    <div class="inputBox form-group">
       <label class="text-right" for="name_fancy">* Nome Fantasia:</label>
       <input type="text" name="name_fancy" id="name_fancy" value="" class="form-control" maxlength="255"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
     
@@ -64,7 +121,7 @@
     </div>
     </div>
 
-    <div class="inputBox form-group has-error">
+    <div class="inputBox form-group">
         <div class="inscbox-SM form-group inputInscEst">
           <label class="inpInscEstLbl text-right" for="registration_state">* Inscrição Estadual: </label>
           <input type="text" name="registration_state" id="registration_state" value="" class="form-control" maxlength="255">
@@ -97,11 +154,11 @@
       <div class="combo"> 
         <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker">
           <option value="0" label="Selecione">Selecione</option>
-          <option value="P" label="Lucro Presumido">Lucro Presumido</option>
-          <option value="R" label="Lucro Real">Lucro Real</option>
-          <option value="M" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
-          <option value="S" label="Simples">Simples</option>
-          <option value="X" label="Super Simples">Super Simples</option>
+          <option value="Lucro Presumido" label="Lucro Presumido">Lucro Presumido</option>
+          <option value="Lucro Real" label="Lucro Real">Lucro Real</option>
+          <option value="MEI - Micro Empreendedor Individual" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
+          <option value="Simples" label="Simples">Simples</option>
+          <option value="Super Simples" label="Super Simples">Super Simples</option>
       </select>
    
     </div>
@@ -119,21 +176,21 @@
 			<h3 class="tt-cadastro">Endereço</h3>
 
       <div class="inputBox">
-        <div class="inputCep form-group cep has-error">
+        <div class="inputCep form-group cep">
       <label class="text-right" for="end_cep">* CEP:</label>
         <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
         
     </div>
         </div>
     </div>
-    <div class="inputBox form-group has-error">
+    <div class="inputBox form-group">
       <label class="text-right" for="end_rua">* Endereço:</label>
         <input type="text" name="end_rua" id="end_rua" value="" class="form-control" maxlength="255">
       
     </div>
       </div>
     <div class="inputBox">
-      <div class="isentoDivBx form-group has-error">
+      <div class="isentoDivBx form-group">
       <label class="text-right" for="end_num">* Número:</label>
         <input type="text" name="end_num" id="end_num" value="" class="form-control" maxlength="255">
      
@@ -146,13 +203,13 @@
       </div>
     
     <div class="inputBox">
-      <div class="inscbox-SM form-group has-error">
+      <div class="inscbox-SM form-group">
       <label class="text-right" for="end_bairro">* Bairro:</label>
         <input type="text" name="end_bairro" id="end_bairro" value="" class="form-control" maxlength="255">
      
     </div>
       </div>
-      <div class="isentoDivBx form-group has-error">
+      <div class="isentoDivBx form-group">
     <label class="text-right" for=""> * Estado: </label>
     <div class="combo">
       <select name="end_estado" id="end_estado" class=" dropdown-select selectpicker">
@@ -193,7 +250,7 @@
 
       </div>
     <div class="inputBox">
-      <div class="inscMuniRegimeTributCidad form-group has-error">
+      <div class="inscMuniRegimeTributCidad form-group">
       <label class="text-right" for="end_cidade">* Cidade:</label>
         <input type="text" name="end_cidade" id="end_cidade"value="" class="form-control" maxlength="255">
      
@@ -201,13 +258,13 @@
       </div>
 
     </div>
-    <div class="inputBox form-group has-error">
+    <div class="inputBox form-group">
       <label class="text-right" for="fone_comercial">* Telefone Comercial:</label>
       <input type="text" name="fone_comercial" id="fone_comercial" value="" class="phonenumber form-control">
   
     </div>
     </div>
-    <div class="inputBox form-group has-error">
+    <div class="inputBox form-group">
       <label class="text-right" for="emailnfe">* E-mail NF-e:</label>
       <input type="text" name="emailnfe" id="emailnfe" value="" class="form-control">
     
@@ -221,43 +278,43 @@
           <div cla
           ss=""> 
           <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio1" value="1" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio1" value="Loja Virtual" class="checkboxadjusment">
             Loja Virtual (e-commerce, marketplace)
           </label>
           <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio2" value="2" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio2" value="Revendedor de TI com foco em consumidor doméstico e pequenas empresas" class="checkboxadjusment">
             Revendedor de TI com foco em consumidor doméstico e pequenas empresas
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio3" value="3" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio3" value="Revendedor de TI com foco em Corporativo de médias e grandes empresas" class="checkboxadjusment">
             Revendedor de TI com foco em Corporativo de médias e grandes empresas
         </label>
         <label class ="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio4" value="4" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio4" value="Revendedor de Automação Comercial" class="checkboxadjusment">
             Revendedor de Automação Comercial
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio5" value="5" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio5" value="Revendedor de Segurança Eletrônica" class="checkboxadjusment">
             Revendedor de Segurança Eletrônica
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio6" value="6" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio6" value="Provedor de Internet (ISP)" class="checkboxadjusment">
             Provedor de Internet (ISP)
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio7" value="7" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio7" value="Revendedor de Geradores de Energia Solar" class="checkboxadjusment">
             Revendedor de Geradores de Energia Solar
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio8" value="8" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio8" value="Prestador de Serviços, Suporte em TI, Assistência Técnica" class="checkboxadjusment">
             Prestador de Serviços, Suporte em TI, Assistência Técnica
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio9" value="9" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio9" value="Integrador Solar" class="checkboxadjusment">
             Integrador Solar
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio10" value="10" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]" id="classificacaoNegocio10" value="Outros" class="checkboxadjusment">
             Outros
         </label>
           </div>
@@ -272,7 +329,7 @@
         <strong>Estaremos juntamente dos dados da sua empresa pré-registrando seus dados pessoais nos nossos sistemas:</strong>
       </div>
     <div class="inputBox">
-        <div class="inscbox-SM form-group has-error">
+        <div class="inscbox-SM form-group">
           <label class="text-right" for="nome_cliente">* Nome Completo:</label>
           <input type="text" name="nome_cliente" id="nome_cliente" value="" class="form-control" maxlength="255">
        
@@ -280,12 +337,12 @@
         </div>
         <div class="ctCpf form-group">
           <label class="text-right" for="cpf_cliente"> CPF:</label>
-          <input type="text" name="cpf_cliente" id="cpf_cliente" value="" class="form-control" maxlength="14">
+          <input type="text" name="cpf_cliente" id="cpf_cliente" value="" class="form-control"data-mask="999.999.999-99" minlength="14" autocomplete="off">
         </div>
     </div>
    
     <div class="inputBox">
-      <div class="celDepCarg form-group has-error">
+      <div class="celDepCarg form-group">
       <label class="text-right" for="celular_cliente">* Celular/Whatsapp:</label>
       <input type="text" name="celular_cliente" id="celular_cliente" value="" class="phonenumber form-control" data-mask="(99) 99999-9999" minlength="14" autocomplete="off"> 
     
@@ -299,8 +356,8 @@
       <label class="text-right" for="cliente_cargo">* Cargo:</label>
       <div class="combo">
         <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;">
-        <select name="cliente-cargo" class="dropdown-select selectpicker">
-          <option value="">
+        <select name="cliente_cargo" id="cliente_cargo" class="dropdown-select selectpicker">
+            <option value="0" label=""></option>
             <option value="Proprietário(a)">Proprietário(a)</option>
             <option value="Diretor(a)">Diretor(a)</option>
             <option value="Gerente Geral">Gerente Geral</option>
@@ -309,8 +366,6 @@
             <option value="Técnico em TI">Técnico em TI</option>
             <option value="Financeiro">Financeiro</option>
             <option value="Outros"></option>
-            <option value=""></option>
-          </option>
         </select>
       </div>
       
@@ -322,7 +377,7 @@
     <div class="inputBox">
     <div class="dadosEmpresaEndereco form-group has-error">
       <label class="text-right" for="">* Email:</label>
-      <input type="text" name="cliente_email" id="contacts_email" value="" class="form-control">
+      <input type="text" name="cliente_email" id="cliente_email" value="" class="form-control">
   
     </div>
     </div>
@@ -596,9 +651,15 @@
         $('#end-cep').mask('99999-999');
         $('#cpf-cliente').mask('999.999.999-99');
         });
+    </script>
+    <script>
+      'use strict';
 
+      const pesquisarCep= () =>{
+        alert("Ola");
+      }
 
- 
+      document.getElementById('end_cep').addEventListener('focusout',pesquisarCep);
     </script>
     
 

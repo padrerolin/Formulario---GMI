@@ -338,6 +338,11 @@ input[type='file'] {
     float: left;
     margin-right: 100px;
 }
+label .error{
+    color:#f00;
+    font-weight: bold;
+    padding:0 5px;
+}
 
 
  

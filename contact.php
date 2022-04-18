@@ -23,11 +23,13 @@ require_once __DIR__. "/vendor/autoload.php";
     $fone = $_POST['fone_comercial'];
     $emailNFE = $_POST['emailnfe'];
 
-    
+    /*Transformando o array em string */
     $classifi = isset($_POST['classificacao_negocio'] 
      )
      ? $_POST['classificacao_negocio'] : null;
 
+   
+   
    /*Dados do Cliente*/
     $nomecompleto = $_POST['nome_cliente'];
     $cpf = $_POST['cpf_cliente'];
@@ -37,7 +39,7 @@ require_once __DIR__. "/vendor/autoload.php";
     $email = $_POST['cliente_email'];
     $skype = $_POST['cliente_skype'];
 
-
+      /*Recebendo os anexos*/
     if(isset($_FILES['input_cnpj']))
     {
        $ext = strtolower(substr($_FILES['input_cnpj']['name'],-4)); //Pegando extensão do arquivo
@@ -81,12 +83,22 @@ require_once __DIR__. "/vendor/autoload.php";
     $corpo .= "<strong> Cidade:  </strong>$cidade<br>";
     $corpo .= "<strong> Fone:  </strong>$fone<br>";
     $corpo .= "<strong> Email NFE:  </strong>$emailNFE<br>";
+    $classificacao = $classifi;
+    foreach ($classificacao as $valor){
+      $corpo .= "<strong> Classificação do seu negocio:  </strong>$valor<br>";
+    }
+    $corpo .= "<strong> Nome do Cliente:  </strong>$nomecompleto<br>";
+    $corpo .= "<strong> CPF do Cliente:  </strong>$cpf<br>";
+    $corpo .= "<strong> Departamento do cliente:  </strong>$departamento<br>";
+    $corpo .= "<strong> Cargo:  </strong>$cargo<br>";
+    $corpo .= "<strong> Email:  </strong>$email<br>";
+   
     
     $header = "Content-Type: text/html; charset= utf-8\n";
     $header .="From: $email Reply-to: $email\n";
     
 
-    $mpdf = new mPDF();
+    /*$mpdf = new mPDF();
     $mpdf ->WriteHTML($corpo);
     $mpdf ->Output();
 
@@ -96,6 +108,6 @@ require_once __DIR__. "/vendor/autoload.php";
     /*Remover o @ para pegar o mail*/
     @mail($para,$assunto,$corpo,$header);
     
-    /*echo $corpo;*/
+    echo $corpo;
 
 ?>
