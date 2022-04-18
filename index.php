@@ -178,7 +178,7 @@
       <div class="inputBox">
         <div class="inputCep form-group cep">
       <label class="text-right" for="end_cep">* CEP:</label>
-        <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
+        <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" data-mask="99999-999" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
         
     </div>
         </div>
@@ -655,8 +655,26 @@
     <script>
       'use strict';
 
-      const pesquisarCep= () =>{
-        alert("Ola");
+      const preencherFormulario = (endereco)=>{
+        document.getElementById('end_rua').value = endereco.logradouro;
+        document.getElementById('end_bairro').value = endereco.bairro;
+        document.getElementById('end_estado').value = endereco.uf;
+        document.getElementById('end_cidade').value = endereco.localidade;
+
+      }
+
+      const pesquisarCep= async() =>{
+        const cep = document.getElementById('end_cep').value; 
+        const url = `http://viacep.com.br/ws/${cep}/json/`;
+        const dados = await fetch(url);
+        const endereco = await dados.json();
+        if (endereco.hasOwnProperty('erro')){
+          document.getElementById('end_rua').value = 'CEP não encontrado !';
+        }else{
+          preencherFormulario(endereco);
+        }
+        
+      
       }
 
       document.getElementById('end_cep').addEventListener('focusout',pesquisarCep);

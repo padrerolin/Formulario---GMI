@@ -44,7 +44,7 @@ require_once __DIR__. "/vendor/autoload.php";
     {
        $ext = strtolower(substr($_FILES['input_cnpj']['name'],-4)); //Pegando extensão do arquivo
        $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-       $dir = './imagens/'; //Diretório para uploads 
+       $dir = './anexos/CNPJ'; //Diretório para uploads 
        move_uploaded_file($_FILES['input_cnpj']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
        
     } 
@@ -52,16 +52,16 @@ require_once __DIR__. "/vendor/autoload.php";
     {
        $ext = strtolower(substr($_FILES['input_rg']['name'],-4)); //Pegando extensão do arquivo
        $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-       $dir = './imagens/'; //Diretório para uploads 
+       $dir = './anexos/RG'; //Diretório para uploads 
        move_uploaded_file($_FILES['input_rg']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-       
+
     } 
-    if(isset($_FILES['input_comprov']))
+    if(isset($_FILES['input_res']))
     {
-       $ext = strtolower(substr($_FILES['input_comprov']['name'],-4)); //Pegando extensão do arquivo
+       $ext = strtolower(substr($_FILES['input_res']['name'],-4)); //Pegando extensão do arquivo
        $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-       $dir = './imagens/'; //Diretório para uploads 
-       move_uploaded_file($_FILES['input_Comprov']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+       $dir = './anexos/compRes'; //Diretório para uploads 
+       move_uploaded_file($_FILES['input_res']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
        
     } 
 
@@ -98,9 +98,11 @@ require_once __DIR__. "/vendor/autoload.php";
     $header .="From: $email Reply-to: $email\n";
     
 
-    /*$mpdf = new mPDF();
+    $mpdf = new mPDF();
     $mpdf ->WriteHTML($corpo);
     $mpdf ->Output();
+
+    
 
 
 
@@ -108,6 +110,6 @@ require_once __DIR__. "/vendor/autoload.php";
     /*Remover o @ para pegar o mail*/
     @mail($para,$assunto,$corpo,$header);
     
-    echo $corpo;
+    /*echo $corpo;*/
 
 ?>
