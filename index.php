@@ -7,67 +7,7 @@
 <script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
 
-<!--<script type="text/javascript">
-  $(document).ready(function(){
-    $('#formval').validate({
-      rules:{
-        cnpj:{
-            required: true
-        },
-        name_corporate:{
-            required: true
-        },
-        name_fancy:{
-            required: true  
-        },
-        registration_state:{
-            required: true
-        },
-        regime_tributario:{
-           required: true
-        },
-        end_cep:{
-          required: true
-        },
-        end_num:{
-          required: true
-        },
-        end_comp:{
-          required: true
-        },
-        end_bairro:{
-          required: true
-        },
-        fone_comercial:{
-          required: true
-        },
-        emailnfe:{
-          required: true,
-          email:true
-        },
-        classificacao_negocio:{
-          required: true
-        },
-        nome_cliente:{
-          required: true
-        },
-        departamento_cliente:{
-          required: true
-        },
-        cliente_cargo:{
-          required: true
-        },
-        cliente_email:{
-          required: true,
-          email: true
-        }
-      },
-      messages:{
 
-      }
-    });
-  });-->
-</script>
 
 </head>
 <body>
@@ -99,7 +39,7 @@
       
     <div class="inputBox form-group">
       <label class="text-right" for="cnpj">* CNPJ:</label>
-      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off">
+      <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off" minlength="14" required>
       <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
         
        
@@ -108,14 +48,16 @@
 
     <div class="inputBox form-group">
       <label class="text-right" for="name_corporate">* Razão Social:</label>
-      <input type="text" name="name_corporate" id="name_corporate" value="" class="form-control" maxlength="255"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+      <input type="text" name="name_corporate" id="name_corporate" value="" class="form-control" maxlength="255" required>
+      <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
  
     </div>
     </div>
     </div>
     <div class="inputBox form-group">
       <label class="text-right" for="name_fancy">* Nome Fantasia:</label>
-      <input type="text" name="name_fancy" id="name_fancy" value="" class="form-control" maxlength="255"><div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+      <input type="text" name="name_fancy" id="name_fancy" value="" class="form-control" maxlength="255" required>
+      <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
     
     </div>
     </div>
@@ -124,7 +66,7 @@
     <div class="inputBox form-group">
         <div class="inscbox-SM form-group inputInscEst">
           <label class="inpInscEstLbl text-right" for="registration_state">* Inscrição Estadual: </label>
-          <input type="text" name="registration_state" id="registration_state" value="" class="form-control" maxlength="255">
+          <input type="text" name="registration_state" id="registration_state" value="" class="form-control cb" maxlength="255" required data-id="teste">
        
         </div>
     </div>
@@ -133,8 +75,8 @@
         <div class="isentoDivBx form-group checkboxInscEst">
           <label class="isentoLabel text-right" for="Isento">Isento</label>
           <div class="isentoBx">
-          <input type="hidden" name=" " value="0">
-          <input type="checkbox" name="registration_state_exempted" id="Isento" value="1" class="form-control">
+          <input type="hidden" name="registration_state_exempted" value="0">
+          <input type="checkbox" name="registration_state_exempted" id="Isento" value="1" class="form-control cb" data-id="teste">
           </div>
           </div>
     </div>
@@ -153,7 +95,7 @@
       <label class="text-right" for="">* Regime tributário: </label>
       <div class="combo"> 
         <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker">
-          <option value="0" label="Selecione">Selecione</option>
+          <option value="0" label="Selecione" required>Selecione</option>
           <option value="Lucro Presumido" label="Lucro Presumido">Lucro Presumido</option>
           <option value="Lucro Real" label="Lucro Real">Lucro Real</option>
           <option value="MEI - Micro Empreendedor Individual" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
@@ -178,26 +120,26 @@
       <div class="inputBox">
         <div class="inputCep form-group cep">
       <label class="text-right" for="end_cep">* CEP:</label>
-        <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" data-mask="99999-999" autocomplete="off"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
+        <input type="text" name="end_cep" id="end_cep" value=""class="cep form-control" data-mask="99999-999" autocomplete="off" required minlength="8"><p class="element-description"><a target="_blank" href="http://www.buscacep.correios.com.br/">Consultar CEP</a></p>
         
     </div>
         </div>
     </div>
     <div class="inputBox form-group">
       <label class="text-right" for="end_rua">* Endereço:</label>
-        <input type="text" name="end_rua" id="end_rua" value="" class="form-control" maxlength="255">
+        <input type="text" name="end_rua" id="end_rua" value="" class="form-control" maxlength="255" required>
       
     </div>
       </div>
     <div class="inputBox">
       <div class="isentoDivBx form-group">
       <label class="text-right" for="end_num">* Número:</label>
-        <input type="text" name="end_num" id="end_num" value="" class="form-control" maxlength="255">
+        <input type="text" name="end_num" id="end_num" value="" class="form-control" maxlength="255" required>
      
     </div>
       </div>
       <div class="inscbox-SM form-group">
-        <label class="text-right" for="end_comp">* Complemento:</label>
+        <label class="text-right" for="end_comp"> Complemento:</label>
         <input type="text" name="end_comp" id="end_comp" value="" class="form-control" maxlength="255">
       </div>
       </div>
@@ -205,7 +147,7 @@
     <div class="inputBox">
       <div class="inscbox-SM form-group">
       <label class="text-right" for="end_bairro">* Bairro:</label>
-        <input type="text" name="end_bairro" id="end_bairro" value="" class="form-control" maxlength="255">
+        <input type="text" name="end_bairro" id="end_bairro" value="" class="form-control" maxlength="255" required>
      
     </div>
       </div>
@@ -252,7 +194,7 @@
     <div class="inputBox">
       <div class="inscMuniRegimeTributCidad form-group">
       <label class="text-right" for="end_cidade">* Cidade:</label>
-        <input type="text" name="end_cidade" id="end_cidade"value="" class="form-control" maxlength="255">
+        <input type="text" name="end_cidade" id="end_cidade"value="" class="form-control" maxlength="255" required>
      
     </div>
       </div>
@@ -260,13 +202,13 @@
     </div>
     <div class="inputBox form-group">
       <label class="text-right" for="fone_comercial">* Telefone Comercial:</label>
-      <input type="text" name="fone_comercial" id="fone_comercial" value="" class="phonenumber form-control">
+      <input type="text" name="fone_comercial" id="fone_comercial" value="" class="phonenumber form-control" required>
   
     </div>
     </div>
     <div class="inputBox form-group">
       <label class="text-right" for="emailnfe">* E-mail NF-e:</label>
-      <input type="text" name="emailnfe" id="emailnfe" value="" class="form-control">
+      <input type="email" name="emailnfe" id="emailnfe" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
     
     </div>
     </div>
@@ -331,31 +273,31 @@
     <div class="inputBox">
         <div class="inscbox-SM form-group">
           <label class="text-right" for="nome_cliente">* Nome Completo:</label>
-          <input type="text" name="nome_cliente" id="nome_cliente" value="" class="form-control" maxlength="255">
-       
+          <input type="text" inputmode="text" name="nome_cliente" id="nome_cliente" value="" class="form-control" maxlength="255" enterkeyhint="next"placeholder="Digite seu nome completo" required>
     </div>
+    <div class="ctCpf form-group">
+          <label class="text-right" for="cpf_cliente">* CPF:</label>
+          <input type="text" name="cpf_cliente" id="cpf_cliente" value="" class="form-control"data-mask="999.999.999-99" minlength="14" autocomplete="off" required>
         </div>
-        <div class="ctCpf form-group">
-          <label class="text-right" for="cpf_cliente"> CPF:</label>
-          <input type="text" name="cpf_cliente" id="cpf_cliente" value="" class="form-control"data-mask="999.999.999-99" minlength="14" autocomplete="off">
         </div>
+       
     </div>
    
     <div class="inputBox">
       <div class="celDepCarg form-group">
       <label class="text-right" for="celular_cliente">* Celular/Whatsapp:</label>
-      <input type="text" name="celular_cliente" id="celular_cliente" value="" class="phonenumber form-control" data-mask="(99) 99999-9999" minlength="14" autocomplete="off"> 
+      <input type="text" name="celular_cliente" id="celular_cliente" value="" class="phonenumber form-control" data-mask="(99) 99999-9999" minlength="14" autocomplete="off" required> 
     
     </div>
     </div>
       <div class="celDepCarg form-group">
       <label class="text-right" for="departamento_cliente">* Departamento:</label>
-      <input type="text" name="departamento_cliente" id="departamento_cliente" value="" class="form-control" maxlength="255">
+      <input type="text" name="departamento_cliente" id="departamento_cliente" value="" class="form-control" maxlength="255" required>
       </div>
       <div class="celDepCarg form-group">
       <label class="text-right" for="cliente_cargo">* Cargo:</label>
       <div class="combo">
-        <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;">
+        <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;" required>
         <select name="cliente_cargo" id="cliente_cargo" class="dropdown-select selectpicker">
             <option value="0" label=""></option>
             <option value="Proprietário(a)">Proprietário(a)</option>
@@ -377,7 +319,7 @@
     <div class="inputBox">
     <div class="dadosEmpresaEndereco form-group has-error">
       <label class="text-right" for="">* Email:</label>
-      <input type="text" name="cliente_email" id="cliente_email" value="" class="form-control">
+      <input type="email" name="cliente_email" id="cliente_email" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido">
   
     </div>
     </div>
@@ -401,7 +343,7 @@
       <!-- INICIO DOS ANEXOS -->
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvCnpj" class="arqvClass">Insira seu cartão CNPJ: 
+          <label for="arqvCnpj" class="arqvClass">Insira seu:<br>   Cartão CNPJ 
           <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
           </label>
           <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
@@ -409,7 +351,7 @@
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvCPF" class="arqvClass">Insira seu RG/CPF: 
+          <label for="arqvCPF" class="arqvClass"><br> RG/CPF: 
           <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
           </label>
           <input id="arqvCPF"type="file" name="input_rg" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
@@ -417,7 +359,7 @@
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvRes" class="arqvClass">Insira seu Comprovante : 
+          <label for="arqvRes" class="arqvClass"><br> Comprovante de Residencia: 
           <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
           </label>
           <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
@@ -678,6 +620,17 @@
       }
 
       document.getElementById('end_cep').addEventListener('focusout',pesquisarCep);
+    </script>
+    <script>
+       var cbs = document.getElementsByClassName('cb');
+
+       function cbClick() {
+         var input= document.querySelector('input[data-id="' + this.getAttribute('data-id')+ '"]:not([type="checkbox"])');
+         input.disable = !this.checked;
+       }
+       for(var i in cbs){
+         cbs[i].onclick = cbClick;
+       }
     </script>
     
 
