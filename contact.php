@@ -38,7 +38,7 @@ require_once __DIR__. "/vendor/autoload.php";
     $cargo = $_POST['cliente_cargo'];
     $email = $_POST['cliente_email'];
     $skype = $_POST['cliente_skype'];
-
+ 
       /*Recebendo os anexos*/
     if(isset($_FILES['input_cnpj']))
     {
@@ -98,9 +98,10 @@ require_once __DIR__. "/vendor/autoload.php";
     $header .="From: $email Reply-to: $email\n";
     
 
-    $mpdf = new mPDF();
+    /*$mpdf = new mPDF();
     $mpdf ->WriteHTML($corpo);
-    $mpdf ->Output();
+    $mpdf ->Output();*/
+    
 
     
 
@@ -110,6 +111,6 @@ require_once __DIR__. "/vendor/autoload.php";
     /*Remover o @ para pegar o mail*/
     @mail($para,$assunto,$corpo,$header);
     
-    /*echo $corpo;*/
+    echo $corpo, $ext;
 
 ?>
