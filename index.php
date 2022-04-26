@@ -6,6 +6,7 @@
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
+<link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <header id="header" class="header-login">
@@ -36,7 +37,7 @@
       <input type="hidden" name="id" value="" class=" form-control" id="id">
       <input type="hidden" name="person_type" value="J" class=" form-control" id="person_type">
       
-    <div class="inputBox form-group">
+    <div class="inputBox form-group ">
       <label class="text-right" for="cnpj">* CNPJ:</label>
       <input type="text" name="cnpj" id="cnpj" value="" class="cnpj form-control" autocomplete="off" minlength="14" required>
       <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
@@ -66,7 +67,6 @@
         <div class="inscbox-SM form-group inputInscEst">
           <label class="inpInscEstLbl text-right" for="registration_state">* Inscrição Estadual: </label>
           <input  type="text" name="registration_state" id="registration_state" value="" class="form-control cb" maxlength="255"  data-id="teste" required>
-       
         </div>
     </div>
         </div>
@@ -92,8 +92,8 @@
       <div class="inscMuniRegimeTributCidad form-group has-error">
       <label class="text-right" for="">* Regime tributário: </label>
       <div class="combo"> 
-        <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker">
-          <option value="0" label="Selecione" >Selecione</option>
+        <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker" required>
+          <option value="" label="" >Selecione</option>
           <option value="Lucro Presumido" label="Lucro Presumido">Lucro Presumido</option>
           <option value="Lucro Real" label="Lucro Real">Lucro Real</option>
           <option value="MEI - Micro Empreendedor Individual" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
@@ -152,7 +152,7 @@
       <div class="isentoDivBx form-group">
     <label class="text-right" for=""> * Estado: </label>
     <div class="combo">
-      <select name="end_estado" obrigatorio="sim" id="end_estado" class=" dropdown-select selectpicker">
+      <select name="end_estado" obrigatorio="sim" id="end_estado" class=" dropdown-select selectpicker" required>
       <option value="0" label=""></option>
       <option value="AC" label="AC">AC</option>
       <option value="AL" label="AL">AL</option>
@@ -206,7 +206,7 @@
     </div>
     <div class="inputBox form-group">
       <label class="text-right" for="emailnfe">* E-mail NF-e:</label>
-      <input type="email" name="emailnfe" id="emailnfe" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
+      <input type="text" name="emailnfe" id="emailnfe" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
     
     </div>
     </div>
@@ -292,12 +292,13 @@
       <label class="text-right" for="departamento_cliente">* Departamento:</label>
       <input type="text" name="departamento_cliente" id="departamento_cliente" value="" class="form-control" maxlength="255" required>
       </div>
+      
       <div class="celDepCarg form-group">
       <label class="text-right" for="cliente_cargo">* Cargo:</label>
       <div class="combo">
         <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;" >
         <select name="cliente_cargo" id="cliente_cargo" class="dropdown-select selectpicker">
-            <option value="0" label=""></option>
+            <option value="" label=""></option>
             <option value="Proprietário(a)">Proprietário(a)</option>
             <option value="Diretor(a)">Diretor(a)</option>
             <option value="Gerente Geral">Gerente Geral</option>
@@ -305,20 +306,19 @@
             <option value="Comprador">Comprador</option>
             <option value="Técnico em TI">Técnico em TI</option>
             <option value="Financeiro">Financeiro</option>
-            <!-- Quando selecionar Outros o select virar um input -->
-            <option value="Outros (especifique)">Outros (especifique)</option>
+            <option value="Outros (especifique)">Outros (especifique)
+            </option>
         </select>
       </div>
-      
       </div>
     </div>
 
 
-    <input type="hidden" name="contactsAactive" value="1">
+
     <div class="inputBox">
-    <div class="dadosEmpresaEndereco form-group has-error">
+    <div class="dadosEmpresaEndereco form-group">
       <label class="text-right" for="">* Email:</label>
-      <input type="email" name="cliente_email" id="cliente_email" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
+      <input type="text" name="cliente_email" id="cliente_email" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
   
     </div>
     </div>
@@ -663,11 +663,131 @@
 
        Isento.addEventListener("click", function(){
          if (this.checked){
-           toggleReadOnly(true);
+           $('input[name="registration_state"]').
+           val("ISENTO").
+           prop('readonly', true);
+           //Adicionar o nome ISENTO dentro do value do input
          }else{
-           toggleReadOnly(false);
+           $('input[name="registration_state"]').
+           val("").
+           prop('readonly', false);
          }
        });
+       var role = $('#cliente_cargo');
+          if (role.length > 0) {
+            role.hide();
+            role.closest('div').addClass('combo');
+            var select = $('<select/>');
+            select.attr('name', role.attr('name'));
+            select.attr('class', 'dropdown-select selectpicker');
+            var options = [
+              '',
+              'Proprietário(a)',
+              'Diretor(a)',
+              'Gerente Geral',
+              'Gerente TI',
+              'Comprador',
+              'Vendedor',
+              'Técnico em TI',
+              'Financeiro',
+              'Outros (especifique)'
+            ];
+            for (var i in options) {
+			var option = $('<option/>');
+			option.attr("value", options[i]);
+			option.html(options[i]);
+			select.append(option);
+		}
+           
+            if ($.inArray(role.val(), options) != -1) {
+			select.val(role.val())
+		}
+            var creating = true;
+		    select.on('change', function(ev) {
+			// Verifica se foi selecionado Outros (última opção)
+			if ($(this).val() == options[options.length - 1] || (role.val() != "" && $.inArray(role.val(), options) == -1)) {
+				$(this).hide();
+				$(this).attr('disabled', 'disabled');
+				role.closest('div').removeClass('combo');
+				role.show();
+				if (!creating) {
+					role.focus();
+				}
+				creating = false;
+			}
+		});
+    	role.after(select);
+		select.trigger('change');
+		role.on('blur', function(ev) {
+			if ($(this).val() == "") {
+				select.removeAttr('disabled');
+				role.hide();
+				select.val("");
+				select.show();
+				role.closest('div').addClass('combo');
+			}
+		});
+  }
+  var productsLength = $.map(data.products, function(n, i) { return i; }).length;
+  if (productsLength > 0) {
+            $('section.box-lista-pedidos table tbody tr').each(function(i, el) {
+                $(this).find('input[name*="quantity_rma"]').parent().removeClass('has-error');
+                $(this).find('input[name*="defect"]').parent().removeClass('has-error');
+            });
+            for (var cont = 0; cont < productsLength; cont++) {
+                addProductRmaRow(data.products[cont]);
+            }
+            $('.addOrderRma').show();
+        } else {
+
+var div = divAlert('Verifique o preenchimento dos campos em destaque.');
+
+$('section.content').prepend(div);
+
+$('section.box-lista-pedidos table tbody tr').each(function(i, el) {
+    var quantityRma = $(this).find('input[name*="quantity_rma"]');
+    var defect = $(this).find('input[name*="defect"]');
+
+    if (quantityRma.val() == "") {
+        quantityRma.parent().addClass('has-error');
+    } else {
+        quantityRma.parent().removeClass('has-error');
+    }
+
+    if (defect.val() == "") {
+        defect.parent().addClass('has-error');
+    } else {
+        defect.parent().removeClass('has-error');
+    }
+});
+}
+
+        
+
+
+  //ALERT DANGER
+  function divAlert(msg) {
+
+    var divAlert = $('<div>').attr('class', 'over clear box-alerta');
+    var divAlertDanger = $('<div>').attr('class', 'alert alert-danger');
+    var btClose = $('<button>').attr('type', 'button').attr('class', 'close').attr('data-dismiss', 'alert').attr('aria-hidden', 'true').html('x');
+    var strong = $('<strong>').html('Erro! ');
+    var span = $('<span>').html(msg);
+
+    $(btClose).appendTo(divAlertDanger);
+    $(strong).appendTo(divAlertDanger);
+    $(span).appendTo(divAlertDanger);
+    $(divAlertDanger).appendTo(divAlert);
+
+    return divAlert;
+
+    }
+       
+
+       
+       
+
+       
 
        function toggleReadOnly(bool){
          var inputs = document.getElementsByTagName("input");
@@ -678,7 +798,30 @@
          }
        }
     </script>
-    <script> //Estilizar
+    <script> 
+    $(function(){
+      $.validator.setDefaults({
+        errorClass: 'help-block',
+        highlight: function(element){
+          $(element)
+          .closest('.form-group')
+          .addClass('has-error');
+      },
+      unhighlight: function(element){
+          $(element)
+          .closest('.form-group')
+          .removeClass('has-error');
+      },
+      errorPlacement: function(error,element){
+        if (element.prop('type')=== 'checkbox'){
+          error.insertAfter(element.parent());
+        } else {
+          error.insertAfter(element);
+        }
+      }
+    });
+    
+    //Estilizar
     $('#formval').validate({
       rules:{
         "classificacao_negocio[]":{
@@ -687,92 +830,94 @@
         "cliente_cargo":{
           required:true
         },
-        "regime_tributario":{
+        "end_estado":{
           required:true
         },
-        "end_estado":{
+        "regime_tributario":{
           required:true
         }
        
         },
         messages:{
           "cnpj":{
-            required:"*"
+            required:""
           },
           "name_corporate":{
-            required:"*"
+            required:""
           },
           "name_fancy":{
-            required:"*"
+            required:""
           },
-          'registration_state':{
-            required:"*"
+          "registration_state":{
+            required: ""
           },
           "regime_tributario":{
-            required:"*"
+            required:""
           },
           "end_cep":{
-            required:"*"
+            required:""
           },
           'end_rua':{
-            required:"*"
+            required:""
           },
           'end_num':{
-            required:"*"
+            required:""
           },
           'end_bairro':{
-            required:"*"
+            required:""
           },
           'end_estado':{
-            required:"*"
+            required:""
           },
           'end_cidade':{
-            required:"*"
+            required:""
           },
           'fone_comercial':{
-            required:"*"
+            required:""
           },
           'nome_cliente':{
-            required:"*"
+            required:""
           },
           'cpf_cliente':{
-            required:"*"
+            required:""
           },
           'cliente_email':{
-            required:"*"
+            required:"",
+            email:""
           },
           'emailnfe':{
-            required:"*"
+            required:"",
+            email:""
           },
           'celular_cliente':{
-            required:"*"
+            required:""
           },
           'departamento_cliente':{
-            required:"*"
-          },
-          'registration_state_exempted':{
-            required:"*"
+            required:""
           },
           'classificacao_negocio[]':{
-            required:"*"
+            required:""
           }
-          
-
-
-      
+   
       }
     })
+  })
     </script>
+<!-- PORQUE O CSS SO TA PEGANDO AQUI ?? -->
     <style type="text/css">
-      label.error{
-    border-color : #B94A48;
-    margin: -70px 0 0 12px;
-    color: #f00;
+    .has-error .form-control{
+    border-color:red !important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+.help-block{
+    position: absolute;
+    color: #b94a48 !important;
     font-weight:bold;
     padding: 0 5px;
-    
 }
-
+element.style {
+    display: block;
+}
     </style>
 
     

@@ -42,30 +42,6 @@ require_once __DIR__. "/vendor/autoload.php";
     $email = $_POST['cliente_email'];     
     $skype = $_POST['cliente_skype'];
     
-    /*Começando o anexo */
-    $tmp_name =$_FILES['input_cnpj']['tmp_name'];
-    $name = $_FILES['input_cnpj']['name'];
-    $size = $_FILES['input_cnpj']['size'];
-    $type = $_FILES['input_cnpj']['type'];
-    $error = $_FILES['input_cnpj']['error'];
-
- 
-
-    $boundary = md5("random");
-    $handle = fopen($tmp_name,"r");
-    $content = fread($handle, $size);
-    fclose($handle);
-    $encoded_content = chunk_split(base64_encode($content));
-    /*$corpo = "--$boundary\r\n";
-    $corpo .= "Content-Type: text/plain; charset=ISO-8859-1\r\n";
-    $corpo .= "Content-Transfer-Encoding: base64\r\n\r\n";
-    $corpo .= chunk_split(base64_encode($corpo)); 
-    $corpo .= "Content-Disposition: attachment; filename=".$name."\r\n";
-    $corpo .= "Content-Transfer-Encoding: base64\r\n";
-    $corpo .= "X-Attachment-Id: ".rand(1000, 99999)."\r\n\r\n"; 
-    $corpo .= $encoded_content;
-    https://acervolima.com/php-enviar-anexo-com-e-mail/ site pra tentar
-    passar o anexo por mail*/
 
     $corpo = "<strong> Dados da empresa do cliente </strong><br><br>";
     $corpo .= "<strong> CNPJ:  </strong>$cnpj<br>";
@@ -118,6 +94,7 @@ require_once __DIR__. "/vendor/autoload.php";
              $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
              $dir = './anexos/CNPJ'; //Diretório para uploads 
              move_uploaded_file($_FILES['input_cnpj']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+             $corpo .= "<img src='$dir$new_name' width=100px height=100px object-fit:fill;>" ;
           } 
           if($_POST['button'] && isset($_FILES['input_rg']))
           {
@@ -125,6 +102,7 @@ require_once __DIR__. "/vendor/autoload.php";
              $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
              $dir = './anexos/RG'; //Diretório para uploads 
              move_uploaded_file($_FILES['input_rg']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+             $corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
           } 
           if($_POST['button'] && isset($_FILES['input_res']))
           {
@@ -132,17 +110,16 @@ require_once __DIR__. "/vendor/autoload.php";
              $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
              $dir = './anexos/compRes'; //Diretório para uploads 
              move_uploaded_file($_FILES['input_res']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+             $corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
           } 
    
-      $headers = "MIME-Version: 1.0\r\n"; 
       $headers .= "Content-Type: multipart/mixed;";
-      $headers .= "boundary = $boundary\r\n";
       $headers .=  "From: $email Reply-to: $email\n";
     
 
-    /*$mpdf = new mPDF();
+    $mpdf = new mPDF();
     $mpdf ->WriteHTML($corpo);
-    $mpdf ->Output();*/
+    $mpdf ->Output();
     
 
     
@@ -167,6 +144,6 @@ require_once __DIR__. "/vendor/autoload.php";
 
 
     
-    echo $corpo;
+    /*echo $corpo;*/
 
 ?>
