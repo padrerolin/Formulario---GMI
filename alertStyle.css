@@ -1,0 +1,49 @@
+.has-error .form-control{
+    border-color:#b94a48 !important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+.alert span {
+    font: 14px "Century Gothic";
+}
+.alert-danger{
+    background: #f2838f;
+    border: 0;
+}
+.alert{
+    border-radius: 7px;;
+    padding: 7px;
+}
+.alert-danger .close {
+    color: #c16872 !important;
+    text-shadow: 0 1px 0 #c16872;
+    font-size: 19px;
+    font-weight: normal;
+}
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+.has-error .form-control{
+    border-color:red !important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+.help-block{
+    position: absolute;
+    color: #b94a48 !important;
+    font-weight:bold;
+    padding: 0 5px;
+}
+element.style {
+    display: block;
+}
+.alert{
+    margin: 0 auto;
+    width: 485px;
+}
+.close{
+    float: right;
+    opacity: 1;
+}

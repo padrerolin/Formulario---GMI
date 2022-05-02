@@ -94,7 +94,6 @@ label {
 .cadastro label {
     text-align: left;
     font: 15px/30px "Century Gothic";
-    color: #414141;
 }
 .cadastro input[type="text"] {
     border: 1px solid #dde2e4;
@@ -156,7 +155,7 @@ label {
 }
 .combo {
     margin: 0;
-    width: 100%;
+    width: 80%;
     height: 37px;
     background: #FFF;
 }
@@ -177,10 +176,9 @@ label {
     z-index: 1;
     font-family: "Century Gothic";
     color: #a4a4a4;
-    border:0;
-    border: 0;
     border-radius: 0;
-    background:transparent;
+    border: 0;
+    background:transparent ;
     -webkit-appearance: none ;
 }
 a {
@@ -269,7 +267,7 @@ img {
 .combo::before {
     background: url(imgs/ico-combo-maior.jpg) no-repeat right center #FFF;
     content: "";
-    width: 38px;
+    width: 80px;
     height: 100%;
     position: absolute;
     right: 0;
@@ -331,16 +329,24 @@ nav ul{
 }
 /* Esconde o input */
 input[type='file'] {
-    display: none
+    color: #414141;
   }
+
 .arqvClass{
+    padding: 10px 5px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
     float: left;
     margin-right: 100px;
-}
-
-.has-error .form-control{
-    border-color:#b94a48 !important;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 

@@ -21,6 +21,7 @@ require_once __DIR__. "/vendor/autoload.php";
     $cidade = $_POST['end_cidade'];
     $fone = $_POST['fone_comercial'];
     $emailNFE = $_POST['emailnfe'];
+   
 
     /*Transformando os arrays em strings */
     $classifi = isset($_POST['classificacao_negocio'] 
@@ -40,8 +41,8 @@ require_once __DIR__. "/vendor/autoload.php";
     $departamento = $_POST['departamento_cliente'];
     $cargo = $_POST['cliente_cargo'];
     $email = $_POST['cliente_email'];     
-    $skype = $_POST['cliente_skype'];
-    
+    $skype = $_POST['cliente_skype'];     
+
 
     $corpo = "<strong> Dados da empresa do cliente </strong><br><br>";
     $corpo .= "<strong> CNPJ:  </strong>$cnpj<br>";
@@ -69,7 +70,6 @@ require_once __DIR__. "/vendor/autoload.php";
     $corpo .= "<strong> Cidade:  </strong>$cidade<br>";
     $corpo .= "<strong> Fone:  </strong>$fone<br>";
     $corpo .= "<strong> Email NFE:  </strong>$emailNFE<br>";
-    //Colocar os checkbox e os combos como campos obrigatorios
     $classificacao = $classifi;
     foreach ($classificacao as $valor){
       $corpo .= "<strong> Classificação do seu negocio:  </strong>$valor<br>";
@@ -80,11 +80,6 @@ require_once __DIR__. "/vendor/autoload.php";
     $corpo .= "<strong> Cargo:  </strong>$cargo<br>";
     $corpo .= "<strong> Email:  </strong>$email<br>";
 
-
-   
-   
-
-    
 
           /*Recebendo os anexos*/
           //Colocar os anexos em um IF para confirmar envio deles 
@@ -122,11 +117,7 @@ require_once __DIR__. "/vendor/autoload.php";
     $mpdf ->Output();
     
 
-    
-
-
-
-
+   
     /*Remover o @ para pegar o mail*/
     //Passar os anexos para o mail
     $sentMailResult = @mail($para,$corpo,$headers);
@@ -141,9 +132,6 @@ require_once __DIR__. "/vendor/autoload.php";
        die("Por favor preencha o formulario novamente");
     }*/
 
-
-
-    
     /*echo $corpo;*/
-
+    
 ?>

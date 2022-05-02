@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <head>
 <link href="formulario.css" rel="stylesheet">
+<link href="alertStyle.css" rel="stylesheet">
 <title>Formulario | GMI </title>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
 <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
   <header id="header" class="header-login">
@@ -16,7 +18,6 @@
         <img src="imgs/gmilogo.png" alt="GMI Distribuidora">
         </div>
       </div>
-
     </section>
   </header>
 
@@ -27,9 +28,14 @@
 			<cite>Registro de Clientes</cite>
 	</h2>
 </header>
+<div class="alert alert-danger" id="alert"role="alert" style="display:none">
+<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+<strong>Erro!</strong>
+Verifique o preenchimento dos campos em destaque.
+</div>
  
     
-    <form role="form" id="formval" class="cadastro inputBox" action="contact.php" name="client_data" method="post" enctype="multipart/form-data">
+    <form role="form" name="client_data" id="formval" class="cadastro inputBox" action="contact.php"  method="post" enctype="multipart/form-data">
     <div id="divError" style="display:none"></div>
 
     <fieldset class="dadosEmpresaEndereco">
@@ -53,31 +59,32 @@
  
     </div>
     </div>
-    </div>
+    
     <div class="inputBox form-group">
       <label class="text-right" for="name_fancy">* Nome Fantasia:</label>
       <input type="text" name="name_fancy" id="name_fancy" value="" class="form-control" maxlength="255"required >
-      <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
+    <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher.">
     
     </div>
     </div>
-    </div>
+    
 
     <div class="inputBox form-group">
         <div class="inscbox-SM form-group inputInscEst">
           <label class="inpInscEstLbl text-right" for="registration_state">* Inscrição Estadual: </label>
           <input  type="text" name="registration_state" id="registration_state" value="" class="form-control cb" maxlength="255"  data-id="teste" required>
         </div>
-    </div>
         </div>
-        
+        </div>
         <div class="isentoDivBx form-group checkboxInscEst">
           <label class="isentoLabel text-right" for="Isento">Isento</label>
           <div class="isentoBx">
           <input type="checkbox" name="registration_state_exempted" id="Isento" value="1" class="form-control cb" data-id="teste">
           </div>
           </div>
-    </div>
+      </div>
+        
+        
     
     
     <div class="inputBox">
@@ -88,18 +95,19 @@
     </div>
     
 
-    <div class="inputBox">
-      <div class="inscMuniRegimeTributCidad form-group has-error">
+    <div class="inputBox form-group">
+      <div class="inscMuniRegimeTributCidadgroup form-group">
       <label class="text-right" for="">* Regime tributário: </label>
       <div class="combo"> 
-        <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker" required>
+        <select name="regime_tributario" id="regime_tributario" class="dropdown-select selectpicker form-control" >
           <option value="" label="" >Selecione</option>
           <option value="Lucro Presumido" label="Lucro Presumido">Lucro Presumido</option>
           <option value="Lucro Real" label="Lucro Real">Lucro Real</option>
           <option value="MEI - Micro Empreendedor Individual" label="MEI - Micro Empreendedor Individual">MEI - Micro Empreendedor Individual</option>
           <option value="Simples" label="Simples">Simples</option>
           <option value="Super Simples" label="Super Simples">Super Simples</option>
-      </select>
+      
+        </select>
    
     </div>
       <div class="required-icon" data-toggle="tooltip" data-placement="top" title="Este campo é obrigatório. Por favor, preencher."></div>
@@ -142,7 +150,7 @@
       </div>
       </div>
     
-    <div class="inputBox">
+    <div class="inputBox form-group">
       <div class="inscbox-SM form-group">
       <label class="text-right" for="end_bairro">* Bairro:</label>
         <input type="text" name="end_bairro" id="end_bairro" value="" class="form-control" maxlength="255" required>
@@ -152,7 +160,7 @@
       <div class="isentoDivBx form-group">
     <label class="text-right" for=""> * Estado: </label>
     <div class="combo">
-      <select name="end_estado" obrigatorio="sim" id="end_estado" class=" dropdown-select selectpicker" required>
+      <select name="end_estado"  id="end_estado" class=" dropdown-select selectpicker form-control">
       <option value="0" label=""></option>
       <option value="AC" label="AC">AC</option>
       <option value="AL" label="AL">AL</option>
@@ -182,12 +190,7 @@
       <option value="SP" label="SP">SP</option>
       <option value="TO" label="TO">TO</option>
       </select>
-    
-    </div>
-    </div>
       </div>
-
-
       </div>
     <div class="inputBox">
       <div class="inscMuniRegimeTributCidad form-group">
@@ -203,60 +206,62 @@
       <input type="text" name="fone_comercial" id="fone_comercial" value="" class="phonenumber form-control" required>
   
     </div>
-    </div>
     <div class="inputBox form-group">
       <label class="text-right" for="emailnfe">* E-mail NF-e:</label>
       <input type="text" name="emailnfe" id="emailnfe" value="" class="form-control" inputmode="email" enterkeyhint="next" placeholder="Digite um Email valido" required>
-    
     </div>
-    </div>
+
       </fieldset>
       <fieldset class="classificacao-set">
         <div class="row classificacao-negocio">
           <div class="inscMuniRegimeTributCidad form-group">
-          <label class="text-right"><p>* Classifique seu negócio</p> (múltipla escolha):</label>
+          <label class="text-right">* Classifique seu negócio (múltipla escolha):</label>
           <div cla
           ss=""> 
           <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" rotulo="classificações" grupock="classifique" qde_min="1" id="classificacaoNegocio1" value="Loja Virtual" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"  rotulo="classificações" grupock="classifique" qde_min="1" id="classificacaoNegocio1" value="Loja Virtual" class="checkboxadjusment">
             Loja Virtual (e-commerce, marketplace)
           </label>
           <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio2" value="Revendedor de TI com foco em consumidor doméstico e pequenas empresas" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio2" value="Revendedor de TI com foco em consumidor doméstico e pequenas empresas" class="checkboxadjusment">
             Revendedor de TI com foco em consumidor doméstico e pequenas empresas
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio3" value="Revendedor de TI com foco em Corporativo de médias e grandes empresas" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio3" value="Revendedor de TI com foco em Corporativo de médias e grandes empresas" class="checkboxadjusment">
             Revendedor de TI com foco em Corporativo de médias e grandes empresas
         </label>
         <label class ="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio4" value="Revendedor de Automação Comercial" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio4" value="Revendedor de Automação Comercial" class="checkboxadjusment">
             Revendedor de Automação Comercial
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio5" value="Revendedor de Segurança Eletrônica" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio5" value="Revendedor de Segurança Eletrônica" class="checkboxadjusment">
             Revendedor de Segurança Eletrônica
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio6" value="Provedor de Internet (ISP)" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio6" value="Provedor de Internet (ISP)" class="checkboxadjusment">
             Provedor de Internet (ISP)
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio7" value="Revendedor de Geradores de Energia Solar" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio7" value="Revendedor de Geradores de Energia Solar" class="checkboxadjusment">
             Revendedor de Geradores de Energia Solar
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio8" value="Prestador de Serviços, Suporte em TI, Assistência Técnica" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio8" value="Prestador de Serviços, Suporte em TI, Assistência Técnica" class="checkboxadjusment">
             Prestador de Serviços, Suporte em TI, Assistência Técnica
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio9" value="Integrador Solar" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio9" value="Integrador Solar" class="checkboxadjusment">
             Integrador Solar
         </label>
         <label class="text-right">
-            <input type="checkbox" name="classificacao_negocio[]" obrigatorio="sim" grupock="classifique" id="classificacaoNegocio10" value="Outros" class="checkboxadjusment">
+            <input type="checkbox" name="classificacao_negocio[]"   id="classificacaoNegocio10" value="Outros" class="checkboxadjusment">
             Outros
         </label>
+          <i class="fa fa-warning error" data-placement="right" title data-html="true" rel="tooltip" data-original-title="Este campo é obrigatório. Por favor, preencher.">
+              
+          </i>
+
           </div>
         </div>
         </div>
@@ -334,7 +339,7 @@
 		</div>
 
     <div class="btoCanEnv">
-					<input type="submit" name="button" class="bto-submeter bto-float bto-salvar" value="Enviar cadastro">
+					<input type="submit" name="button" id="button" class="bto-submeter bto-float bto-salvar" value="Enviar cadastro">
 		</div>
   </div>
     
@@ -342,24 +347,22 @@
       <!-- INICIO DOS ANEXOS -->
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvCnpj" name = "attachment" class="arqvClass">Insira seu:   Cartão CNPJ 
-          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+    
+          <label for="arqvCnpj" name = "attachment" class="arqvClass">Cartão CNPJ 
           </label>
           <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
         </div>
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvCPF" class="arqvClass"> RG/CPF: 
-          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+          <label for="arqvCPF" class="arqvClass"> RG/CPF
           </label>
-          <input id="arqvCPF"type="file" name="input_rg" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
+          <input id="arqvCPF"type="file" name="input_rg" multiple accept=".image/*,.pdf" style="display: none">
         </div>
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
-          <label for="arqvRes" class="arqvClass"> Comprovante de Residencia: 
-          <img src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/action-upload-alt-512.png" style="width: 20px" />
+          <label for="arqvRes" class="arqvClass"> Comprovante de Residencia
           </label>
           <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
         </div>
@@ -583,345 +586,11 @@
 
     </footer>-->
 
-    <script type="text/javascript" src="_js/jquery-1.6.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script type="text/javascript" src="_js/jquery.maskedinput-1.1.4.pack.js"></script>
-
-    <script type="text/javascript">
-
-      $(document).ready(function() {
-        $('#cnpj').mask('99.999.999/9999-99');
-        $('#end-cep').mask('99999-999');
-        $('#cpf-cliente').mask('999.999.999-99');
-        $("$formval").submit(validar);
-        });
-        //Fazer com que os campos de checkbox e de select sejam validados
-        function validar(){
-          var msg="";
-
-          $("[obrigatorio=sim]").each(function(){
-          
-            if($(this).attr("type") == "checkbox")
-            {
-              if($("input[grupock="+$(this).attr("grupock")+"]:checked").length <
-              $(this).attr("qde_min"))
-              {
-                msg += "<li>Pelo menos "+$(this).attr("qde_min")
-			           +" opção(ões) do campo(s) " + $(this).attr("rotulo")
-			           + " deve(m) ser marcado(s)!</li>";
-              }
-            }
-            else
-            if($(this).val() == '')
-            {
-              msg += '<li>O campo '+ $(this).attr("rotulo")+ 'é obrigatório !</li>';
-            }
-
-          });
-          if (msg=='')
-          {
-            return true;
-          }
-          else
-          {
-            msg = '<ul>' + msg + '</ul>';
-            $("#divError").html(msg).css("color","red").fadeIn(300);
-
-            return false;
-          }
-        }
-    </script>
-    <script>
-      'use strict';
-
-      const preencherFormulario = (endereco)=>{
-        document.getElementById('end_rua').value = endereco.logradouro;
-        document.getElementById('end_bairro').value = endereco.bairro;
-        document.getElementById('end_estado').value = endereco.uf;
-        document.getElementById('end_cidade').value = endereco.localidade;
-
-      }
-
-      const pesquisarCep= async() =>{
-        const cep = document.getElementById('end_cep').value; 
-        const url = `http://viacep.com.br/ws/${cep}/json/`;
-        const dados = await fetch(url);
-        const endereco = await dados.json();
-        if (endereco.hasOwnProperty('erro')){
-          document.getElementById('end_rua').value = 'CEP não encontrado !';
-        }else{
-          preencherFormulario(endereco);
-        }
-        
-      
-      }
-
-      document.getElementById('end_cep').addEventListener('focusout',pesquisarCep);
-    </script>
-        <script>
-       var Isento = document.getElementById('Isento');
-
-       Isento.addEventListener("click", function(){
-         if (this.checked){
-           $('input[name="registration_state"]').
-           val("ISENTO").
-           prop('readonly', true);
-           //Adicionar o nome ISENTO dentro do value do input
-         }else{
-           $('input[name="registration_state"]').
-           val("").
-           prop('readonly', false);
-         }
-       });
-       var role = $('#cliente_cargo');
-          if (role.length > 0) {
-            role.hide();
-            role.closest('div').addClass('combo');
-            var select = $('<select/>');
-            select.attr('name', role.attr('name'));
-            select.attr('class', 'dropdown-select selectpicker');
-            var options = [
-              '',
-              'Proprietário(a)',
-              'Diretor(a)',
-              'Gerente Geral',
-              'Gerente TI',
-              'Comprador',
-              'Vendedor',
-              'Técnico em TI',
-              'Financeiro',
-              'Outros (especifique)'
-            ];
-            for (var i in options) {
-			var option = $('<option/>');
-			option.attr("value", options[i]);
-			option.html(options[i]);
-			select.append(option);
-		}
-           
-            if ($.inArray(role.val(), options) != -1) {
-			select.val(role.val())
-		}
-            var creating = true;
-		    select.on('change', function(ev) {
-			// Verifica se foi selecionado Outros (última opção)
-			if ($(this).val() == options[options.length - 1] || (role.val() != "" && $.inArray(role.val(), options) == -1)) {
-				$(this).hide();
-				$(this).attr('disabled', 'disabled');
-				role.closest('div').removeClass('combo');
-				role.show();
-				if (!creating) {
-					role.focus();
-				}
-				creating = false;
-			}
-		});
-    	role.after(select);
-		select.trigger('change');
-		role.on('blur', function(ev) {
-			if ($(this).val() == "") {
-				select.removeAttr('disabled');
-				role.hide();
-				select.val("");
-				select.show();
-				role.closest('div').addClass('combo');
-			}
-		});
-  }
-  var productsLength = $.map(data.products, function(n, i) { return i; }).length;
-  if (productsLength > 0) {
-            $('section.box-lista-pedidos table tbody tr').each(function(i, el) {
-                $(this).find('input[name*="quantity_rma"]').parent().removeClass('has-error');
-                $(this).find('input[name*="defect"]').parent().removeClass('has-error');
-            });
-            for (var cont = 0; cont < productsLength; cont++) {
-                addProductRmaRow(data.products[cont]);
-            }
-            $('.addOrderRma').show();
-        } else {
-
-var div = divAlert('Verifique o preenchimento dos campos em destaque.');
-
-$('section.content').prepend(div);
-
-$('section.box-lista-pedidos table tbody tr').each(function(i, el) {
-    var quantityRma = $(this).find('input[name*="quantity_rma"]');
-    var defect = $(this).find('input[name*="defect"]');
-
-    if (quantityRma.val() == "") {
-        quantityRma.parent().addClass('has-error');
-    } else {
-        quantityRma.parent().removeClass('has-error');
-    }
-
-    if (defect.val() == "") {
-        defect.parent().addClass('has-error');
-    } else {
-        defect.parent().removeClass('has-error');
-    }
-});
-}
-
-        
-
-
-  //ALERT DANGER
-  function divAlert(msg) {
-
-    var divAlert = $('<div>').attr('class', 'over clear box-alerta');
-    var divAlertDanger = $('<div>').attr('class', 'alert alert-danger');
-    var btClose = $('<button>').attr('type', 'button').attr('class', 'close').attr('data-dismiss', 'alert').attr('aria-hidden', 'true').html('x');
-    var strong = $('<strong>').html('Erro! ');
-    var span = $('<span>').html(msg);
-
-    $(btClose).appendTo(divAlertDanger);
-    $(strong).appendTo(divAlertDanger);
-    $(span).appendTo(divAlertDanger);
-    $(divAlertDanger).appendTo(divAlert);
-
-    return divAlert;
-
-    }
-       
-
-       
-       
-
-       
-
-       function toggleReadOnly(bool){
-         var inputs = document.getElementsByTagName("input");
-         for (var i = 0; i < inputs.length; i++){
-           if (inputs[i].name === "registration_state"){  
-             inputs[i].readOnly = bool;
-           }   
-         }
-       }
-    </script>
-    <script> 
-    $(function(){
-      $.validator.setDefaults({
-        errorClass: 'help-block',
-        highlight: function(element){
-          $(element)
-          .closest('.form-group')
-          .addClass('has-error');
-      },
-      unhighlight: function(element){
-          $(element)
-          .closest('.form-group')
-          .removeClass('has-error');
-      },
-      errorPlacement: function(error,element){
-        if (element.prop('type')=== 'checkbox'){
-          error.insertAfter(element.parent());
-        } else {
-          error.insertAfter(element);
-        }
-      }
-    });
-    
-    //Estilizar
-    $('#formval').validate({
-      rules:{
-        "classificacao_negocio[]":{
-          required:true
-        },
-        "cliente_cargo":{
-          required:true
-        },
-        "end_estado":{
-          required:true
-        },
-        "regime_tributario":{
-          required:true
-        }
-       
-        },
-        messages:{
-          "cnpj":{
-            required:""
-          },
-          "name_corporate":{
-            required:""
-          },
-          "name_fancy":{
-            required:""
-          },
-          "registration_state":{
-            required: ""
-          },
-          "regime_tributario":{
-            required:""
-          },
-          "end_cep":{
-            required:""
-          },
-          'end_rua':{
-            required:""
-          },
-          'end_num':{
-            required:""
-          },
-          'end_bairro':{
-            required:""
-          },
-          'end_estado':{
-            required:""
-          },
-          'end_cidade':{
-            required:""
-          },
-          'fone_comercial':{
-            required:""
-          },
-          'nome_cliente':{
-            required:""
-          },
-          'cpf_cliente':{
-            required:""
-          },
-          'cliente_email':{
-            required:"",
-            email:""
-          },
-          'emailnfe':{
-            required:"",
-            email:""
-          },
-          'celular_cliente':{
-            required:""
-          },
-          'departamento_cliente':{
-            required:""
-          },
-          'classificacao_negocio[]':{
-            required:""
-          }
-   
-      }
-    })
-  })
-    </script>
-<!-- PORQUE O CSS SO TA PEGANDO AQUI ?? -->
-    <style type="text/css">
-    .has-error .form-control{
-    border-color:red !important;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-}
-.help-block{
-    position: absolute;
-    color: #b94a48 !important;
-    font-weight:bold;
-    padding: 0 5px;
-}
-element.style {
-    display: block;
-}
-    </style>
-
-    
-
+<script type="text/javascript" src="_js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mask.js"></script>
+<script type="text/javascript" src="_js/jquery.maskedinput-1.1.4.pack.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
 
