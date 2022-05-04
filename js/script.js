@@ -79,7 +79,7 @@ $(document).ready(function() {
               'Técnico em TI',
               'Financeiro',
               'Outros (especifique)'
-            ];
+            ]; //ALTERAR O METODO DO CARGO
             for (var i in options) {
 			var option = $('<option/>');
 			option.attr("value", options[i]);

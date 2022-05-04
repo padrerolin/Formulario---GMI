@@ -160,8 +160,8 @@ Verifique o preenchimento dos campos em destaque.
       <div class="isentoDivBx form-group">
     <label class="text-right" for=""> * Estado: </label>
     <div class="combo">
-      <select name="end_estado"  id="end_estado" class=" dropdown-select selectpicker form-control">
-      <option value="0" label=""></option>
+      <select name="end_estado"  id="end_estado" class=" dropdown-select selectpicker form-control" required>
+      <option value="" label=""></option>
       <option value="AC" label="AC">AC</option>
       <option value="AL" label="AL">AL</option>
       <option value="AM" label="AM">AM</option>

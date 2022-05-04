@@ -3,7 +3,7 @@ use mPDF;
 require_once __DIR__. "/vendor/autoload.php";
     
     $para ="elmanodeveloper@gmail.com";
-
+    
    
     $cnpj = $_POST['cnpj'];
     $razao_social = $_POST['name_corporate'];
@@ -80,6 +80,11 @@ require_once __DIR__. "/vendor/autoload.php";
     $corpo .= "<strong> Cargo:  </strong>$cargo<br>";
     $corpo .= "<strong> Email:  </strong>$email<br>";
 
+    //Mensagem para o cliente
+
+    $retorno = "$nomecompleto<strong> Seus dados foram armazenados com sucesso,
+     nossa equipe estará entrando em contato.</strong>";
+
 
           /*Recebendo os anexos*/
           //Colocar os anexos em um IF para confirmar envio deles 
@@ -90,6 +95,7 @@ require_once __DIR__. "/vendor/autoload.php";
              $dir = './anexos/CNPJ'; //Diretório para uploads 
              move_uploaded_file($_FILES['input_cnpj']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
              $corpo .= "<img src='$dir$new_name' width=100px height=100px object-fit:fill;>" ;
+             
           } 
           if($_POST['button'] && isset($_FILES['input_rg']))
           {
@@ -115,13 +121,17 @@ require_once __DIR__. "/vendor/autoload.php";
     $mpdf = new mPDF();
     $mpdf ->WriteHTML($corpo);
     $mpdf ->Output();
+    $mpdf->addAttachment('/anexos/CNPJ', '/anexos/RG','/anexos/compRes');
+
+    
+    
     
 
    
     /*Remover o @ para pegar o mail*/
     //Passar os anexos para o mail
     $sentMailResult = @mail($para,$corpo,$headers);
-
+    $sentMailCliente = @mail($email,$retorno,$headers);
     /*if ($sentMailResult)
     {
        echo "Formulario preenchido com sucesso. ";

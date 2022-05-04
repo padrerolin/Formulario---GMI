@@ -177,7 +177,6 @@ label {
     font-family: "Century Gothic";
     color: #a4a4a4;
     border-radius: 0;
-    border: 0;
     background:transparent ;
     -webkit-appearance: none ;
 }
@@ -267,7 +266,7 @@ img {
 .combo::before {
     background: url(imgs/ico-combo-maior.jpg) no-repeat right center #FFF;
     content: "";
-    width: 80px;
+    width: 40px;
     height: 100%;
     position: absolute;
     right: 0;
