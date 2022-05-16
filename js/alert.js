@@ -24,7 +24,11 @@
    
 
 $('#formval').validate({
+  
     rules:{
+      "#arqvCnpj":{
+        required:true
+      },
       "classificacao_negocio":{
         required:true
       },
@@ -36,10 +40,17 @@ $('#formval').validate({
       },
       "regime_tributario":{
         required:true
+      },
+      "input_cnpj":{
+        required:true,
+        
       }
      
       },
       messages:{
+        "#arqvCnpj":{
+          required:""
+        },
         "cnpj":{
           required:""
         },
@@ -109,6 +120,20 @@ $('#button').click(function(){
       return true;
     }else{
       document.getElementById("alert").style.display ="block"; //ativar o display da div
+      $('.arqvClass').css('border-color','red');
     }
   });
 });
+//Alert para os anexos
+
+
+
+
+
+
+
+//Alert para checkbox
+
+
+      
+     

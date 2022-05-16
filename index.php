@@ -7,6 +7,7 @@
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
+
 <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -271,7 +272,7 @@ Verifique o preenchimento dos campos em destaque.
       <h3 class="tt-cadastro">Dados da pessoa responsável pelas compras e respectivas permissões</h3>
 
       <div class="cliente-pre-registro">
-        <strong>Estaremos juntamente dos dados da sua empresa pré-registrando seus dados pessoais nos nossos sistemas:</strong>
+        
       </div>
     <div class="inputBox">
         <div class="inscbox-SM form-group">
@@ -300,9 +301,9 @@ Verifique o preenchimento dos campos em destaque.
       
       <div class="celDepCarg form-group">
       <label class="text-right" for="cliente_cargo">* Cargo:</label>
+      <input type="text" name="cliente_cargoinp" id="cliente_cargoinp" value="" class="form-control" maxlength="255" style="display: none;">
       <div class="combo">
-        <input type="text" name="cliente_cargo" id="cliente_cargo" value="" class="form-control" maxlength="255" style="display: none;" >
-        <select name="cliente_cargo" id="cliente_cargo" class="dropdown-select selectpicker">
+        <select name="cliente_cargo" id="cliente_cargo" class="dropdown-select selectpicker form-control" required>
             <option value="" label=""></option>
             <option value="Proprietário(a)">Proprietário(a)</option>
             <option value="Diretor(a)">Diretor(a)</option>
@@ -333,42 +334,43 @@ Verifique o preenchimento dos campos em destaque.
       </div>
     </div>
     </fieldset>
+         <!-- INICIO DOS ANEXOS -->
+         <div class="alertaAnexo">
+         <fieldset class="classificacaoset">
+         <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvCnpj" name = "attachment" class="arqvClass">* Cartão CNPJ 
+          </label>
+          
+          <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none" required>
+        </div>
+      </div>
+      <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvCPF" class="arqvClass"> * RG/CPF
+          </label>
+          <input id="arqvCPF"type="file" name="input_rg" multiple accept=".image/*,.pdf" style="display: none" required>
+        </div>
+      </div>
+      <div class="anexarArquivos terms-checks">
+        <div class="classificacao-set form-group">
+          <label for="arqvRes" class="arqvClass"> * Comprovante de Residencia
+          </label>
+          <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none" required>
+        </div>
+      </div>
+      </fieldset>
+      </div>
   <div class="inputBox separaBotoes">
     <div class="btoCanEnv">
 					<input type="reset" class="bto-submeter bto-float pull-right" value="Cancelar">
 		</div>
-
+<br>
     <div class="btoCanEnv">
 					<input type="submit" name="button" id="button" class="bto-submeter bto-float bto-salvar" value="Enviar cadastro">
 		</div>
   </div>
-    
-      </div>
-      <!-- INICIO DOS ANEXOS -->
-      <div class="anexarArquivos terms-checks">
-        <div class="classificacao-set form-group">
-    
-          <label for="arqvCnpj" name = "attachment" class="arqvClass">Cartão CNPJ 
-          </label>
-          <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
-        </div>
-      </div>
-      <div class="anexarArquivos terms-checks">
-        <div class="classificacao-set form-group">
-          <label for="arqvCPF" class="arqvClass"> RG/CPF
-          </label>
-          <input id="arqvCPF"type="file" name="input_rg" multiple accept=".image/*,.pdf" style="display: none">
-        </div>
-      </div>
-      <div class="anexarArquivos terms-checks">
-        <div class="classificacao-set form-group">
-          <label for="arqvRes" class="arqvClass"> Comprovante de Residencia
-          </label>
-          <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
-        </div>
-      </div>
-  
-   
+      </div>  
       </form>
       </section>  
     <!-- RODAPE -->
@@ -591,8 +593,10 @@ Verifique o preenchimento dos campos em destaque.
 <script type="text/javascript" src="_js/jquery.maskedinput-1.1.4.pack.js"></script>
 <script type="text/javascript" src="js/alert.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
+
+
 </body>
 </html>
-
 </body>
 </html>

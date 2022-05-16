@@ -7,7 +7,6 @@ $(document).ready(function() {
     });
 
 
-
 //Fill dos campos do endereço por CEP
 
     'use strict';
@@ -36,7 +35,7 @@ $(document).ready(function() {
     document.getElementById('end_cep').addEventListener('focusout',pesquisarCep);
 
     //block do campo de isento
-    var Isento = document.getElementById('Isento');
+    var Isento = document.getElementById('Isento');   
 
        Isento.addEventListener("click", function(){
          if (this.checked){
@@ -61,59 +60,18 @@ $(document).ready(function() {
 
        //Mudar o input ao selecionar o campo outros em cargos
 
-       var role = $('#cliente_cargo');
-          if (role.length > 0) {
-            role.hide();
-            role.closest('div').addClass('combo');
-            var select = $('<select/>');
-            select.attr('name', role.attr('name'));
-            select.attr('class', 'dropdown-select selectpicker');
-            var options = [
-              '',
-              'Proprietário(a)',
-              'Diretor(a)',
-              'Gerente Geral',
-              'Gerente TI',
-              'Comprador',
-              'Vendedor',
-              'Técnico em TI',
-              'Financeiro',
-              'Outros (especifique)'
-            ]; //ALTERAR O METODO DO CARGO
-            for (var i in options) {
-			var option = $('<option/>');
-			option.attr("value", options[i]);
-			option.html(options[i]);
-			select.append(option);
-		}  
-            if ($.inArray(role.val(), options) != -1) {
-			select.val(role.val())
-		}
-            var creating = true;
-		    select.on('change', function(ev) {
-                if ($(this).val() == options[options.length - 1] || (role.val() != "" && $.inArray(role.val(), options) == -1)) {
-                    $(this).hide();
-                    $(this).attr('disabled', 'disabled');
-                    role.closest('div').removeClass('combo');
-                    role.show();
-                    if (!creating) {
-                        role.focus();
-                    }
-                    creating = false;
-                }
-            });
-            role.after(select);
-            select.trigger('change');
-            role.on('blur', function(ev) {
-                if ($(this).val() == "") {
-                    select.removeAttr('disabled');
-                    role.hide();
-                    select.val("");
-                    select.show();
-                    role.closest('div').addClass('combo');
-                }
-            });
-      }
+      var role = $('#cliente_cargo')  
+      $(document).on('change','#cliente_cargo',function(){
+        var opSelecionada = $(this).val()
+        if(opSelecionada == "Outros (especifique)"){
+          $("#cliente_cargoinp").show()
+        }else{
+          $("#cliente_cargoinp").hide()
+        }
+      });
+
+
+      
 
 
 

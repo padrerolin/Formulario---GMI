@@ -2,6 +2,11 @@
     border-color:#b94a48 !important;
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
 }
+.btoCanEnv{
+    width: 100%;
+    float: left;
+}
+
 .alert span {
     font: 14px "Century Gothic";
 }
@@ -18,7 +23,7 @@
     text-shadow: 0 1px 0 #c16872;
     font-size: 19px;
     font-weight: normal;
-}
+}   
 button.close {
     padding: 0;
     cursor: pointer;

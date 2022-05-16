@@ -1,8 +1,15 @@
 <?php   /* Passando os dados pro back*/
 use mPDF;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 require_once __DIR__. "/vendor/autoload.php";
     
-    $para ="elmanodeveloper@gmail.com";
+$idTicket = substr(microtime(),0,8);
+$idTicket = preg_replace( '#[^0-9]#', '', $idTicket );
+
+    $para ="mail.gmimportacao.com.br";
+    $assunto = "[RMA".$idTicket."] Novo chamado GMI Distribuidora";
     
    
     $cnpj = $_POST['cnpj'];
@@ -74,74 +81,86 @@ require_once __DIR__. "/vendor/autoload.php";
     foreach ($classificacao as $valor){
       $corpo .= "<strong> Classificação do seu negocio:  </strong>$valor<br>";
     }
+    $corpo .= "<br><strong> Dados do cliente  </strong><br><br>";
     $corpo .= "<strong> Nome do Cliente:  </strong>$nomecompleto<br>";
     $corpo .= "<strong> CPF do Cliente:  </strong>$cpf<br>";
+    $corpo .= "<strong> Celular/Whatsapp:  </strong>$numerocliente<br>";
     $corpo .= "<strong> Departamento do cliente:  </strong>$departamento<br>";
     $corpo .= "<strong> Cargo:  </strong>$cargo<br>";
     $corpo .= "<strong> Email:  </strong>$email<br>";
+    $corpo .= "<strong> Skype:  </strong>$skype<br>";
 
     //Mensagem para o cliente
 
     $retorno = "$nomecompleto<strong> Seus dados foram armazenados com sucesso,
-     nossa equipe estará entrando em contato.</strong>";
+     nossa equipe estará entrando em contato imediatamente.</strong>";
 
 
-          /*Recebendo os anexos*/
+          /*Recebendo os anexos*/ 
           //Colocar os anexos em um IF para confirmar envio deles 
           if($_POST['button'] && isset($_FILES['input_cnpj']))
           {
              $ext = strtolower(substr($_FILES['input_cnpj']['name'],-4)); //Pegando extensão do arquivo
-             $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-             $dir = './anexos/CNPJ'; //Diretório para uploads 
-             move_uploaded_file($_FILES['input_cnpj']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-             $corpo .= "<img src='$dir$new_name' width=100px height=100px object-fit:fill;>" ;
+             $new_name1 = date(" Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+             $dir = './anexos/'; //Diretório para uploads 
+             move_uploaded_file($_FILES['input_cnpj']['tmp_name'], $dir.$new_name1); //Fazer upload do arquivo
+             //$corpo .= "<img src='$dir$new_name' width=100px height=100px object-fit:fill;>" ;
              
           } 
           if($_POST['button'] && isset($_FILES['input_rg']))
           {
              $ext = strtolower(substr($_FILES['input_rg']['name'],-4)); //Pegando extensão do arquivo
-             $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-             $dir = './anexos/RG'; //Diretório para uploads 
-             move_uploaded_file($_FILES['input_rg']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-             $corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
+             $new_name2 = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+             $dir = './anexos/'; //Diretório para uploads 
+             move_uploaded_file($_FILES['input_rg']['tmp_name'], $dir.$new_name2); //Fazer upload do arquivo
+             //$corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
           } 
           if($_POST['button'] && isset($_FILES['input_res']))
           {
              $ext = strtolower(substr($_FILES['input_res']['name'],-4)); //Pegando extensão do arquivo
-             $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-             $dir = './anexos/compRes'; //Diretório para uploads 
-             move_uploaded_file($_FILES['input_res']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-             $corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
+             $new_name3 = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+             $dir = './anexos/'; //Diretório para uploads 
+             move_uploaded_file($_FILES['input_res']['tmp_name'], $dir.$new_name3); //Fazer upload do arquivo
+             //$corpo .= "<img src='$dir$new_name'width=100px height=100px object-fit:fill>";
           } 
-   
+
+          
+      $headers =  "From: $email Reply-to: $email\n";
       $headers .= "Content-Type: multipart/mixed;";
-      $headers .=  "From: $email Reply-to: $email\n";
-    
+      
+  
 
-    $mpdf = new mPDF();
-    $mpdf ->WriteHTML($corpo);
-    $mpdf ->Output();
-    $mpdf->addAttachment('/anexos/CNPJ', '/anexos/RG','/anexos/compRes');
+  
+   $mail = new PHPMailer(true);
+   $mail -> IsSMTP();
+   $mail ->CharSet = 'UTF-8';
+   $mail ->True;
+   $mail ->SMTPSecure = "tls";
+   $mail->Host = "mail.gmimportacao.com.br";
+   $mail ->Port = 587;
+   $mail->SMTPAuth = true;
+   $mail ->Username = "nao-responda@gmimportacao.com.br";
+   $mail->Password = "qG#t9J3oTF1D";
+   $mail->From = "$email";
+   $mail->setfrom("nao-responda@gmimportacao.com.br","GMI DISTRIBUIDORA");
+   $mail->FromName = "CADASTRO VIA SITE GMI";
+   $mail ->AddAddress($email,$nomecompleto);
+   $mail ->WordWrap = 50;
+   $mail ->isHTML = true;
+   $mail ->Subject = $assunto;
+   $mail->Body ='<br/>' . $corpo . '<br/>';
+   $mail->addAttachment('./anexos/'. $new_name1);
+   $mail->addAttachment('./anexos/'. $new_name2);
+   $mail->addAttachment('./anexos/'. $new_name3);
+   $mail ->AltBody = "$corpo";
 
-    
-    
-    
-
-   
-    /*Remover o @ para pegar o mail*/
-    //Passar os anexos para o mail
-    $sentMailResult = @mail($para,$corpo,$headers);
-    $sentMailCliente = @mail($email,$retorno,$headers);
-    /*if ($sentMailResult)
-    {
-       echo "Formulario preenchido com sucesso. ";
-       unlink($name);
-    }
-    else
-    {
-       die("Por favor preencha o formulario novamente");
-    }*/
-
-    /*echo $corpo;*/
-    
+   if(!$mail->Send()) // Envia o email
+ {
+ echo "Erro no envio da mensagem";
+ } 
+ 
+ $mpdf = new mPDF();
+ $mpdf ->WriteHTML($corpo);
+ $mpdf ->Output();
+ 
 ?>
