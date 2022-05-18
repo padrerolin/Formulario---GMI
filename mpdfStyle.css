@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding: 0;
+}
+.cadastro input[type="text"] {
+    border: 2px solid black;
+}
+
+
+.tt-cadastro{
+    border-bottom: 2px solid #d10018;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font: 15px "Century Gothic";
+    color: #d10018;
+}
+.tt-vitrine cite {
+    font: 17px "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color: #97221d;
+    padding-right: 20px;
+    background: #FAFAFA;
+    float: right;
+    border-top: 2px solid #97221d;
+    border-bottom:2px solid #97221d ;
+}

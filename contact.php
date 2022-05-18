@@ -51,7 +51,147 @@ $idTicket = preg_replace( '#[^0-9]#', '', $idTicket );
     $skype = $_POST['cliente_skype'];     
 
 
-    $corpo = "<strong> Dados da empresa do cliente </strong><br><br>";
+    $corpo = "<header class='box-vitrine'>
+		<h2 class='tt-vitrine'>
+			<cite>ANÁLISE CADASTRAL - MAPEAMENTO SIMPLES</cite>
+		</h2>
+	</header>
+    
+    <fieldset class='col-md-6'>
+    <h3 class='tt-cadastro'>DADOS GERAIS <br><br></h3>
+    <div class='row'>
+      <div class='col-md-10 col-xs-10 form-group'>
+        <label class='text-right' for='razao_social'>Razão Social </label>
+          <input type='text' name='razao_social' id='razao_social' value=$razao_social class='form-control'>
+      </div>
+      <div class='col-md-10 col-xs-10 form-group'>
+        <label class='text-right' for='cnpj'>CNPJ </label>
+          <input type='text' name='cnpj' id='cnpj' value=$cnpj class='cnpj form-control'>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-10 col-xs-10 form-group'>
+        <label class='text-right' for='nome_fantasia'>Nome Fantasia </label>
+          <input type='text' name='nome_fantasia' id='nome_fantasia' value=$nome_fantasia class='form-control'>
+    </div>
+    <div class='col-md-10 col-xs-10 form-group'>
+      <label class='text-right' for='inscricao_estadual'>Inscrição Estadual </label>
+        <input type='text' name='inscricao_estadual' id='inscricao_estadual' value=$inscricao_estadual class='form-control'>
+      </div>
+    <div class='col-md-10 col-xs-10 form-group'>
+      <label class='text-right' for='inscricao_municipal'>Inscrição Municipal </label>
+        <input type='text' name='inscricao_municipal' id='inscricao_municipal' value=$inscricao_municipal class='form-control'>
+      </div>
+    </div>
+
+    <div class='row'>
+    <div class='col-md-10 col-xs-10 form-group'>
+      <label class='text-right' for='regime_tributario'>Regime Tributário </label>
+        <input type='text' name='regime_tributario' id='regime_tributario' value=$regime_tributario class='form-control'>
+  </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='website
+    '>Website </label>
+      <input type='text' name='website' id='website' value=$website class='form-control'>
+    </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='emailNFE'>E-mail NF-e </label>
+      <input type='text' name='emailNFE' id='emailNFE' value=$emailNFE class='form-control'>
+    </div>
+  </div>
+
+  <div class='row'>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='endereco'>Endereço</label>
+      <input type='text' name='endereco' id='endereco' value=$endereco class='form-control'>
+  </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='bairro'>Bairro </label>
+      <input type='text' name='bairro' id='bairro' value=$bairro class='cnpj form-control'>
+  </div>
+</div>
+
+<div class='row'>
+<div class='col-md-10 col-xs-10 form-group'>
+  <label class='text-right' for='cidade'>Cidade </label>
+    <input type='text' name='cidade' id='cidade' value=$cidade class='form-control'>
+</div>
+<div class='col-md-10 col-xs-10 form-group'>
+<label class='text-right' for='cep
+'>CEP </label>
+  <input type='text' name='cep' id='cep' value=$cep class='form-control'>
+</div>
+<div class='col-md-10 col-xs-10 form-group'>
+<label class='text-right' for='fone'>Telefone Comercial </label>
+  <input type='text' name='fone' id='fone' value=$fone class='form-control'>
+</div>
+</div>
+</fieldset>
+<fieldset class='col-md-12'>
+    <h3 class='tt-cadastro'>DOCUMENTOS NECESSÁRIO<br><br></h3>
+    <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right'>
+    <input type='checkbox' name='documentos_necessarios[]' id='classificacao_negocio-1' value='1' class='multiCheckboxAdjusment'>
+    1. CONTRATO SOCIAL / MEI</label></div>
+    <label class='text-right'>
+    <input type='checkbox' name='documentos_necessarios[]' id='classificacao_negocio-2' value='2' class='multiCheckboxAdjusment'>
+    2. RG/CPF DOS SÓCIOS</label></div>
+    <label class='text-right'>
+    <input type='checkbox' name='documentos_necessarios[]' id='classificacao_negocio-3' value='3' class='multiCheckboxAdjusment'>
+    3. BOLETOS PAGOS</label></div>
+    <label class='text-right'>
+    <input type='checkbox' name='documentos_necessarios[]' id='classificacao_negocio-4' value='4' class='multiCheckboxAdjusment'>
+    4. COMPTE DE ENDEREÇO</label></div>
+    <label class='text-right'>
+    <input type='checkbox' name='documentos_necessarios[]' id='classificacao_negocio-5' value='5' class='multiCheckboxAdjusment'>
+    5. INSCRIÇÃO ESTADUAL</label></div> 
+    </fieldset>
+    <fieldset class='col-md-12'>
+    <h3 class='tt-cadastro'>CLASSIFICAÇÃO DE NEGÓCIO<br><br></h3>
+  
+    </fieldset>
+    <fieldset class='col-md-12'>
+    <h3 class='tt-cadastro'>DADOS DO CLIENTE<br><br></h3>
+    <div class='row'>
+    <div class='col-md-10 col-xs-10 form-group'>
+      <label class='text-right' for='nomecompleto'>Nome Completo </label>
+        <input type='text' name='nomecompleto' id='nomecompleto' value=$nomecompleto class='form-control'>
+  </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='cpf'>CPF </label>
+      <input type='text' name='cpf' id='cpf' value=$cpf class='form-control'>
+    </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='numerocliente'>Celular/Whatsapp: </label>
+      <input type='text' name='numerocliente' id='numerocliente' value=$numerocliente class='form-control'>
+    </div>
+  </div>
+
+  <div class='row'>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='departamento'>Departamento</label>
+      <input type='text' name='departamento' id='departamento' value=$departamento class='form-control'>
+  </div>
+  <div class='col-md-10 col-xs-10 form-group'>
+    <label class='text-right' for='cargo'>Cargo </label>
+      <input type='text' name='cargo' id='cargo' value=$cargo class='form-control'>
+  </div>
+</div>
+<div class='row'>
+<div class='col-md-10 col-xs-10 form-group'>
+  <label class='text-right' for='email'>Email</label>
+    <input type='text' name='email' id='email' value=$email class='form-control'>
+</div>
+<div class='col-md-10 col-xs-10 form-group'>
+  <label class='text-right' for='skype'>Skype </label>
+    <input type='text' name='skype' id='skype' value=$skype class='form-control'>
+</div>
+</div>
+
+  
+    </fieldset>";
+    
     $corpo .= "<strong> CNPJ:  </strong>$cnpj<br>";
     $corpo .= "<strong> Razão Social:  </strong>$razao_social<br>";
     $corpo .= "<strong> Nome Fantasia:  </strong>$nome_fantasia<br>";
@@ -136,11 +276,11 @@ $idTicket = preg_replace( '#[^0-9]#', '', $idTicket );
    $mail ->CharSet = 'UTF-8';
    $mail ->True;
    $mail ->SMTPSecure = "tls";
-   $mail->Host = "mail.gmimportacao.com.br";
-   $mail ->Port = 587;
+   $mail->Host = 'smtp.mailtrap.io';
+   $mail ->Port = 2525;
    $mail->SMTPAuth = true;
-   $mail ->Username = "nao-responda@gmimportacao.com.br";
-   $mail->Password = "qG#t9J3oTF1D";
+   $mail ->Username = "32cff1d654178b";
+   $mail->Password = "f3e5abcd0c3ade";
    $mail->From = "$email";
    $mail->setfrom("nao-responda@gmimportacao.com.br","GMI DISTRIBUIDORA");
    $mail->FromName = "CADASTRO VIA SITE GMI";
@@ -154,12 +294,15 @@ $idTicket = preg_replace( '#[^0-9]#', '', $idTicket );
    $mail->addAttachment('./anexos/'. $new_name3);
    $mail ->AltBody = "$corpo";
 
-   if(!$mail->Send()) // Envia o email
- {
- echo "Erro no envio da mensagem";
- } 
+   //if(!$mail->Send()) // Envia o email
+ //{
+ //echo "Erro no envio da mensagem";
+ //} 
  
  $mpdf = new mPDF();
+ $css = file_get_contents("mpdfStyle.css");
+ $mpdf->WriteHTML($css,1);
+
  $mpdf ->WriteHTML($corpo);
  $mpdf ->Output();
  

@@ -5,10 +5,7 @@
 <title>Formulario | GMI </title>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/additional-methods.min"></script>
 <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
-
-<link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -588,9 +585,7 @@ Verifique o preenchimento dos campos em destaque.
 
     </footer>-->
 
-<script type="text/javascript" src="_js/jquery-1.6.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.mask.js"></script>
-<script type="text/javascript" src="_js/jquery.maskedinput-1.1.4.pack.js"></script>
 <script type="text/javascript" src="js/alert.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 
