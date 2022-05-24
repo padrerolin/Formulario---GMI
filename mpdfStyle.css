@@ -1,25 +1,76 @@
-*{
-    margin:0;
-    padding: 0;
+body{
+    background: #fff;
 }
-.cadastro input[type="text"] {
+label{
+    color: black;
+    top: 16px;
+    left: 5px;
+    position: relative;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.col-md-10{
+    display: flex;
+    flex-direction: column;
+    height: 68px;
+    width: 50%;
+}
+
+input{
     border: 2px solid black;
+      height: 15px;
+      padding: 20px 5px;
+      font-size: 15px;
 }
+.row{
+    display: flex;
+    height: 45px;
 
-
+}
+.razaoS{
+    width: 70%;
+}
+.box{
+    width: 885px;
+    margin: 0 auto;
+    height: 50%;
+}
+.docNecessario{
+    top: 0px;
+    display: table-cell;
+    font-size: 30px;
+}
 .tt-cadastro{
-    border-bottom: 2px solid #d10018;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    font: 15px "Century Gothic";
-    color: #d10018;
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+    font: 20px;
+    color: #97221d;
 }
-.tt-vitrine cite {
-    font: 17px "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+.tt-vitrine{
+    border-top: 4px solid #97221d;
+    border-bottom: 4px solid #97221d;
+}
+.tt-vitrine cite{
+    font-size: 20px;
     color: #97221d;
     padding-right: 20px;
     background: #FAFAFA;
     float: right;
-    border-top: 2px solid #97221d;
-    border-bottom:2px solid #97221d ;
+    margin-top: 13px;
 }
+h3 {
+    height: 25px;
+}
+img{
+    height: 50px;
+}
+input[type="text-uniq" i] {
+    border: 0px;
+    padding: 3px 5px;
+}
+i{
+    font-size: 12px;
+}
+
+

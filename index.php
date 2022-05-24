@@ -338,22 +338,21 @@ Verifique o preenchimento dos campos em destaque.
         <div class="classificacao-set form-group">
           <label for="arqvCnpj" name = "attachment" class="arqvClass">* Cartão CNPJ 
           </label>
-          
-          <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none" required>
+          <input id="arqvCnpj"type="file" name="input_cnpj" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
         </div>
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
           <label for="arqvCPF" class="arqvClass"> * RG/CPF
           </label>
-          <input id="arqvCPF"type="file" name="input_rg" multiple accept=".image/*,.pdf" style="display: none" required>
+          <input id="arqvCPF"type="file" name="input_rg" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
         </div>
       </div>
       <div class="anexarArquivos terms-checks">
         <div class="classificacao-set form-group">
           <label for="arqvRes" class="arqvClass"> * Comprovante de Residencia
           </label>
-          <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none" required>
+          <input id="arqvRes"type="file" name="input_res" placeholder="Insira um arquivo" multiple accept=".image/*,.pdf" style="display: none">
         </div>
       </div>
       </fieldset>

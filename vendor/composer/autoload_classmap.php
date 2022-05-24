@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'CGIF' => $vendorDir . '/mpdf/mpdf/classes/gif.php',
     'CGIFCOLORTABLE' => $vendorDir . '/mpdf/mpdf/classes/gif.php',
     'CGIFFILEHEADER' => $vendorDir . '/mpdf/mpdf/classes/gif.php',
@@ -19,14 +20,20 @@ return array(
     'FilterASCIIHexDecode' => $vendorDir . '/setasign/fpdi/filters/FilterASCIIHexDecode.php',
     'FilterLZW' => $vendorDir . '/setasign/fpdi/filters/FilterLZW.php',
     'INDIC' => $vendorDir . '/mpdf/mpdf/classes/indic.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'MYANMAR' => $vendorDir . '/mpdf/mpdf/classes/myanmar.php',
+    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'OTLdump' => $vendorDir . '/mpdf/mpdf/classes/otl_dump.php',
     'PDFBarcode' => $vendorDir . '/mpdf/mpdf/classes/barcode.php',
+    'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
     'SEA' => $vendorDir . '/mpdf/mpdf/classes/sea.php',
     'SVG' => $vendorDir . '/mpdf/mpdf/classes/svg.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'TTFontFile' => $vendorDir . '/mpdf/mpdf/classes/ttfontsuni.php',
     'TTFontFile_Analysis' => $vendorDir . '/mpdf/mpdf/classes/ttfontsuni_analysis.php',
     'UCDN' => $vendorDir . '/mpdf/mpdf/classes/ucdn.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'bmp' => $vendorDir . '/mpdf/mpdf/classes/bmp.php',
     'cssmgr' => $vendorDir . '/mpdf/mpdf/classes/cssmgr.php',
     'directw' => $vendorDir . '/mpdf/mpdf/classes/directw.php',
